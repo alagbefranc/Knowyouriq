@@ -30,7 +30,7 @@ export function Paywall(props: { attemptId: string; heading: string; terms: stri
   }
 
   return (
-    <section className="section" aria-label="Start your trial">
+    <section className="panel" aria-label="Start your trial">
       <span className="label">Payment</span>
       <h2>{props.heading}</h2>
       <p data-testid="terms">

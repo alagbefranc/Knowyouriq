@@ -22,8 +22,23 @@ describe("question bank", () => {
     for (const q of QUESTIONS) expect(toPublic(q)).not.toHaveProperty("answer");
     expect(JSON.stringify(QUESTIONS.map(toPublic))).not.toContain('"answer"');
   });
+  it("has exactly one true rotation among the options of each rotation item", () => {
+    const rotations = QUESTIONS.filter((q) => q.prompt.startsWith("Which one is the same toy"));
+    expect(rotations.length).toBeGreaterThanOrEqual(3);
+    for (const q of rotations) {
+      const unmirrored = q.options.filter((o) => !o.endsWith("m"));
+      expect(unmirrored).toEqual([q.options[q.answer]]);
+    }
+  });
+  it("only uses pictures that exist in the sprite set", () => {
+    const known = new Set(["ball", "cube", "pyramid", "star", "donut", "gem", "arrow", "key", "duck", "can"]);
+    const tokens = QUESTIONS.flatMap((q) => [...(q.sequence ?? []), ...(q.memorize?.items ?? []), ...q.options]);
+    for (const token of tokens.filter((t) => t.startsWith("img:"))) {
+      expect(known.has(token.slice(4).split(/[@*]/)[0]!)).toBe(true);
+    }
+  });
   it("looks questions up by id", () => {
-    expect(getQuestion("n3")?.prompt).toContain("1, 4, 9, 16");
+    expect(getQuestion("n3")?.sequence).toEqual(["n:1", "n:4", "n:9", "n:16", "?"]);
     expect(getQuestion("nope")).toBeUndefined();
   });
 });

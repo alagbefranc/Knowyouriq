@@ -7,17 +7,14 @@ export const metadata: Metadata = {
   icons: { icon: "/brand/knowyouriq-mark.svg" },
 };
 
-// The status bar matches the top of the page in each colour scheme, not the brand colour.
+// One committed dark world, so the status bar matches the night background.
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
   interactiveWidget: "resizes-content",
-  colorScheme: "light dark",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fdfdff" },
-    { media: "(prefers-color-scheme: dark)", color: "#15141c" },
-  ],
+  colorScheme: "dark",
+  themeColor: "#120b33",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -35,12 +32,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="sheet">
           <header className="masthead">
             <a href="/" aria-label="KnowYourIQ home">
-              <picture>
-                <source srcSet="/brand/knowyouriq-wordmark-reversed.svg" media="(prefers-color-scheme: dark)" />
-                <img src="/brand/knowyouriq-wordmark.svg" alt="KnowYourIQ" width={160} height={34} />
-              </picture>
+              <img src="/brand/knowyouriq-wordmark-reversed.svg" alt="KnowYourIQ" width={150} height={32} />
             </a>
-            <span className="label">Form KYIQ-25</span>
           </header>
           {children}
         </div>

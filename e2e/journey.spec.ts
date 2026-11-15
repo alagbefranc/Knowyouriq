@@ -4,7 +4,10 @@ import { startTrial, takeTest } from "./helpers";
 test("landing states the price and renewal before the test starts", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByTestId("pricing-notice")).toContainText("$3.99 today for 7 days. Then $39.99 every 4 weeks until you cancel.");
-  await expect(page.getByRole("button", { name: "Start the free test" })).toBeDisabled();
+  // The test cannot start until the visitor confirms their age.
+  await page.getByRole("button", { name: "Start the free test" }).click();
+  await expect(page.getByText("Tick the box to confirm you are 18 or older.")).toBeVisible();
+  await expect(page).toHaveURL(/\/$/);
 });
 
 test("visitor takes the test, sees a free band, pays, and reads the report", async ({ page }) => {

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { Bubble } from "@/components/Bubble";
+import { Glyph } from "@/components/Glyph";
 import { SKILL_LABELS, type PublicQuestion } from "@/lib/questions";
 
 const LETTERS = ["A", "B", "C", "D", "E"];
@@ -100,17 +100,21 @@ export function TestRunner(props: { attemptId: string; questions: PublicQuestion
 
   if (sectionDone) {
     const last = index >= questions.length;
+    const finished = questions[index - 1]!.skill;
     return (
       <div className="stack" key={`done-${index}`}>
-        {/* Seen five times a test: the heading leads, the rest follows in shrinking gaps, done in about 300ms. */}
+        {/* Seen five times a test: the artwork leads, the words follow in shrinking gaps, done in about 300ms. */}
         <Marks total={questions.length} done={index} />
-        <span className="label">Section {index / 5} of 5</span>
-        <h1 className="beat" style={{ "--y": "8px" } as React.CSSProperties}>
+        <div className="world world-tall beat" style={{ "--s": 0.97 } as React.CSSProperties}>
+          <img src={`/art/worlds/${finished}.webp`} alt="" width={960} height={640} />
+        </div>
+        <span className="label">World {index / 5} of 5 cleared</span>
+        <h1 className="beat" style={{ "--d": "50ms", "--y": "8px" } as React.CSSProperties}>
           Section complete: <mark>{sectionDone}</mark>
         </h1>
-        <p className="muted beat" style={{ "--d": "50ms", "--y": "4px" } as React.CSSProperties}>{last ? "That was the last one." : `${questions.length - index} questions to go.`}</p>
+        <p className="muted beat" style={{ "--d": "90ms", "--y": "4px" } as React.CSSProperties}>{last ? "That was the last one." : `${questions.length - index} questions to go.`}</p>
         <button className="btn btn-primary" onClick={() => setSectionDone(null)}>
-          {last ? "See my result" : "Continue"} <span className="arrow" aria-hidden="true">→</span>
+          {last ? "See my result" : "Continue"}
         </button>
       </div>
     );
@@ -118,33 +122,42 @@ export function TestRunner(props: { attemptId: string; questions: PublicQuestion
 
   if (!question) {
     return (
-      <div className="stack">
-        <Marks total={questions.length} done={questions.length} />
-        <span className="label">Marking</span>
+      <div className="stack center">
+        <img className="quo" src="/art/quo-detective.webp" alt="" width={210} height={210} />
         <h1>Scoring your answers</h1>
         {error ? <p className="error" role="alert">{error}</p> : <p className="muted">Comparing each section with the norm group.</p>}
       </div>
     );
   }
 
+  const pictures = question.options.every((option) => option.startsWith("img:") || option.startsWith("n:"));
+  const strip = (tokens: string[]) => {
+    const size = tokens.length > 6 ? "xs" : tokens.length > 4 ? "sm" : tokens.length === 1 ? "xl" : "md";
+    return tokens.map((token, i) => <Glyph key={i} token={token} size={size} />);
+  };
+
   return (
     <div className="stack">
-      <Marks total={questions.length} done={index} current />
-      <div className="row label">
-        <span>{SKILL_LABELS[question.skill]}</span>
-        <span data-testid="position">{index + 1} of {questions.length}</span>
+      <div className="world">
+        <img src={`/art/worlds/${question.skill}.webp`} alt="" width={960} height={640} />
+        <div className="row label">
+          <span>{SKILL_LABELS[question.skill]}</span>
+          <span data-testid="position">{index + 1} of {questions.length}</span>
+        </div>
       </div>
+      <Marks total={questions.length} done={index} current />
       <div className="stack enter" key={`${question.id}-${memorizing ? "show" : "ask"}`}>
         {memorizing && question.memorize ? (
           <>
-            <p className="label">Remember this</p>
-            <p className="memo" data-testid="memorize">{question.memorize.text}</p>
+            <p className="prompt">Remember these</p>
+            <div className="tray" data-testid="memorize">{strip(question.memorize.items)}</div>
             <div className="countdown" style={{ "--ms": `${question.memorize.ms}ms` } as React.CSSProperties} />
           </>
         ) : (
           <>
             <p className="prompt" data-testid="prompt">{question.prompt}</p>
-            <div className="opts">
+            {question.sequence && <div className="tray">{strip(question.sequence)}</div>}
+            <div className={`opts${pictures ? " opts-grid" : ""}`}>
               {question.options.map((option, choice) => (
                 <button
                   key={option}
@@ -154,8 +167,8 @@ export function TestRunner(props: { attemptId: string; questions: PublicQuestion
                   disabled={selected !== null}
                   onClick={() => choose(choice)}
                 >
-                  <Bubble letter={LETTERS[choice]} />
-                  {option}
+                  <span className="chip">{LETTERS[choice]}</span>
+                  <Glyph token={option} size="lg" />
                 </button>
               ))}
             </div>

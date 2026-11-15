@@ -10,6 +10,10 @@ export function StartForm() {
   const [error, setError] = useState<string | null>(null);
 
   async function start() {
+    if (!adult) {
+      setError("Tick the box to confirm you are 18 or older.");
+      return;
+    }
     setBusy(true);
     setError(null);
     try {
@@ -30,11 +34,11 @@ export function StartForm() {
   return (
     <div className="stack">
       <label className="check">
-        <input id="age-confirm" type="checkbox" checked={adult} onChange={(event) => setAdult(event.target.checked)} />
+        <input id="age-confirm" type="checkbox" checked={adult} onChange={(event) => { setAdult(event.target.checked); setError(null); }} />
         <span>I am 18 or older.</span>
       </label>
-      <button className="btn btn-primary" disabled={!adult || busy} onClick={start}>
-        Start the free test <span className="arrow" aria-hidden="true">→</span>
+      <button className="btn btn-primary" disabled={busy} onClick={start}>
+        Start the free test
       </button>
       {error && <p className="error" role="alert">{error}</p>}
     </div>

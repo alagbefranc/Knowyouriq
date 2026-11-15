@@ -13,12 +13,27 @@ export const SKILL_LABELS: Record<Skill, string> = {
   memory: "Memory",
 };
 
+/**
+ * Visual tokens. A prompt sequence, a memorise set and an option are lists of
+ * tokens the UI draws; anything that is not a token is shown as plain text.
+ *   "img:ball"       a picture from /art/sprites
+ *   "img:key@90"     the same picture turned 90 degrees clockwise
+ *   "img:key@90m"    mirrored, then turned (a different shape, not a rotation)
+ *   "img:ball*3"     three of the picture as one group
+ *   "n:16"           a number tile
+ *   "?"              the missing piece
+ */
+export type Token = string;
+
 export interface Question {
   id: string;
   skill: Skill;
   prompt: string;
+  /** Pictures or number tiles shown under the prompt. */
+  sequence?: Token[];
   /** Shown for `ms` milliseconds, then hidden, before the options appear. */
-  memorize?: { text: string; ms: number };
+  memorize?: { items: Token[]; ms: number };
+  /** Each option is one token or plain text. */
   options: string[];
   /** Index into `options`. Never sent to the browser. */
   answer: number;
@@ -26,33 +41,35 @@ export interface Question {
 
 export type PublicQuestion = Omit<Question, "answer">;
 
-const q = (
-  id: string,
-  skill: Skill,
-  prompt: string,
-  options: string[],
-  answer: number,
-  memorize?: Question["memorize"],
-): Question => ({ id, skill, prompt, options, answer, ...(memorize ? { memorize } : {}) });
+type Extra = Pick<Question, "sequence" | "memorize">;
+const q = (id: string, skill: Skill, prompt: string, options: string[], answer: number, extra: Extra = {}): Question => ({
+  id, skill, prompt, options, answer, ...extra,
+});
+const seq = (...tokens: Token[]): Extra => ({ sequence: tokens });
+const img = (...names: string[]) => names.map((n) => `img:${n}`);
+const nums = (...values: number[]) => values.map((v) => `n:${v}`);
+const NEXT = "What comes next?";
+const TURNED = "Which one is the same toy, only turned?";
 
 export const QUESTIONS: readonly Question[] = [
-  q("p1", "patterns", "What comes next?  ▲ ● ▲ ● ▲ ?", ["▲", "●", "■", "◆"], 1),
-  q("p2", "patterns", "What comes next?  ■ ■ ● ■ ■ ● ■ ■ ?", ["■", "▲", "●", "◆"], 2),
-  q("p3", "patterns", "What comes next?  ↑ → ↓ ← ↑ ?", ["→", "↓", "←", "↑"], 0),
-  q("p4", "patterns", "What comes next?  ● ●● ●●● ●●●● ?", ["●●●", "●●●●", "●●●●●●", "●●●●●"], 3),
-  q("p5", "patterns", "What comes next?  ▲■ ■● ●▲ ▲■ ■● ?", ["▲■", "●▲", "■●", "●■"], 1),
+  q("p1", "patterns", NEXT, img("star", "ball", "cube", "gem"), 1, seq(...img("cube", "ball", "cube", "ball", "cube"), "?")),
+  q("p2", "patterns", NEXT, img("gem", "pyramid", "star", "donut"), 2, seq(...img("gem", "gem", "star", "gem", "gem", "star", "gem", "gem"), "?")),
+  q("p3", "patterns", NEXT, img("arrow@90", "arrow@180", "arrow@270", "arrow@0"), 0, seq(...img("arrow@0", "arrow@90", "arrow@180", "arrow@270", "arrow@0"), "?")),
+  q("p4", "patterns", NEXT, img("ball*3", "ball*4", "ball*6", "ball*5"), 3, seq(...img("ball*1", "ball*2", "ball*3", "ball*4"), "?")),
+  q("p5", "patterns", NEXT, img("cube", "donut", "pyramid", "star"), 1, seq(...img("pyramid", "donut", "donut", "pyramid", "donut", "donut", "pyramid", "donut"), "?")),
 
-  q("n1", "numbers", "What comes next?  2, 4, 6, 8, ?", ["9", "12", "10", "16"], 2),
-  q("n2", "numbers", "What comes next?  3, 6, 12, 24, ?", ["48", "36", "30", "27"], 0),
-  q("n3", "numbers", "What comes next?  1, 4, 9, 16, ?", ["20", "24", "32", "25"], 3),
-  q("n4", "numbers", "What comes next?  2, 3, 5, 8, 13, ?", ["18", "21", "20", "26"], 1),
-  q("n5", "numbers", "What comes next?  81, 27, 9, 3, ?", ["0", "2", "1", "6"], 2),
+  q("n1", "numbers", NEXT, nums(9, 12, 10, 16), 2, seq(...nums(2, 4, 6, 8), "?")),
+  q("n2", "numbers", NEXT, nums(48, 36, 30, 27), 0, seq(...nums(3, 6, 12, 24), "?")),
+  q("n3", "numbers", NEXT, nums(20, 24, 32, 25), 3, seq(...nums(1, 4, 9, 16), "?")),
+  q("n4", "numbers", NEXT, nums(18, 21, 20, 26), 1, seq(...nums(2, 3, 5, 8, 13), "?")),
+  q("n5", "numbers", NEXT, nums(0, 2, 1, 6), 2, seq(...nums(81, 27, 9, 3), "?")),
 
-  q("s1", "spatial", "You face north. You turn right, then right again. Which way do you face?", ["East", "West", "North", "South"], 3),
-  q("s2", "spatial", "A sheet of paper is folded in half once and one hole is punched through both layers. How many holes when it is unfolded?", ["1", "2", "3", "4"], 1),
-  q("s3", "spatial", "Which letter looks the same in a mirror held beside it?", ["A", "F", "G", "R"], 0),
-  q("s4", "spatial", "A clock shows 3:00. The whole clock is turned a quarter turn clockwise. Where does the hour hand point now?", ["Up", "Left", "Down", "Right"], 2),
-  q("s5", "spatial", "How many small cubes make up a 3 by 3 by 3 cube?", ["9", "18", "27", "36"], 2),
+  // Rotation items: exactly one option is the picture turned; the others are mirror images.
+  q("s1", "spatial", TURNED, img("key@90m", "key@180m", "key@270m", "key@90"), 3, seq("img:key")),
+  q("s2", "spatial", TURNED, img("duck@270m", "duck@180", "duck@90m", "duck@0m"), 1, seq("img:duck")),
+  q("s3", "spatial", TURNED, img("can@270", "can@90m", "can@180m", "can@0m"), 0, seq("img:can")),
+  q("s4", "spatial", "The arrow makes a quarter turn clockwise, twice. Where does it point?", img("arrow@0", "arrow@270", "arrow@180", "arrow@90"), 2, seq("img:arrow@0")),
+  q("s5", "spatial", "How many small cubes make up a 3 by 3 by 3 cube?", nums(9, 18, 27, 36), 2, seq("img:cube")),
 
   q("v1", "verbal", "Glove is to hand as sock is to …", ["shoe", "foot", "leg", "wool"], 1),
   q("v2", "verbal", "Hot is to cold as early is to …", ["late", "soon", "morning", "quick"], 0),
@@ -60,11 +77,11 @@ export const QUESTIONS: readonly Question[] = [
   q("v4", "verbal", "Author is to book as composer is to …", ["piano", "orchestra", "symphony", "concert"], 2),
   q("v5", "verbal", "Which word is closest in meaning to scarce?", ["rare", "frightening", "small", "sharp"], 0),
 
-  q("m1", "memory", "Which sequence did you see?", ["7 2 4 9", "7 9 2 4", "7 2 9 4", "2 7 9 4"], 2, { text: "7 2 9 4", ms: 2500 }),
-  q("m2", "memory", "Which sequence did you see?", ["K T M B R", "K M T B R", "T K M B R", "K T M R B"], 0, { text: "K T M B R", ms: 2500 }),
-  q("m3", "memory", "Which word was not in the list?", ["river", "chair", "table", "seven"], 2, { text: "blue · chair · river · seven", ms: 3000 }),
-  q("m4", "memory", "What was the fourth number?", ["1", "5", "8", "6"], 3, { text: "3 8 1 6 5 2", ms: 3000 }),
-  q("m5", "memory", "How many circles were there?", ["2", "3", "4", "5"], 1, { text: "▲ ● ■ ● ▲ ■ ●", ms: 3000 }),
+  q("m1", "memory", "Which one was not there?", img("ball", "star", "gem", "cube"), 2, { memorize: { items: img("star", "cube", "ball", "donut"), ms: 2500 } }),
+  q("m2", "memory", "Which came first?", img("pyramid", "gem", "donut", "star"), 0, { memorize: { items: img("pyramid", "gem", "donut", "star", "ball"), ms: 2500 } }),
+  q("m3", "memory", "How many gems were there?", nums(1, 2, 3, 4), 2, { memorize: { items: img("gem", "ball", "gem", "cube", "duck", "gem"), ms: 3000 } }),
+  q("m4", "memory", "What was the fourth number?", nums(1, 5, 8, 6), 3, { memorize: { items: nums(3, 8, 1, 6, 5, 2), ms: 3000 } }),
+  q("m5", "memory", "Which one came right after the duck?", img("key", "can", "ball", "cube"), 1, { memorize: { items: img("key", "duck", "can", "ball", "cube"), ms: 3000 } }),
 ];
 
 export const QUESTION_COUNT = QUESTIONS.length;
