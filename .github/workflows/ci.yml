@@ -1,0 +1,129 @@
+name: Pipeline
+
+# push -> unit -> integration -> e2e -> perf -> ship
+# Each stage runs only if the one before it passed. Ship runs on main only.
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: pipeline-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  NEXT_TELEMETRY_DISABLED: "1"
+
+jobs:
+  unit:
+    name: Unit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Unit tests
+        run: npm run test:unit
+
+  integration:
+    name: Integration
+    needs: unit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Integration tests
+        run: npm run test:integration
+
+  e2e:
+    name: End to end
+    needs: integration
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+      - name: Build
+        run: npm run build
+      - name: End-to-end tests
+        run: npm run test:e2e
+      - name: Keep the report if a test failed
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-report
+          path: playwright-report/
+          retention-days: 7
+
+  perf:
+    name: Performance
+    needs: e2e
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+      - name: Build
+        run: npm run build
+      - name: Performance bars
+        run: npm run test:perf
+
+  ship:
+    name: Ship
+    needs: perf
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - name: Check deploy credentials
+        id: creds
+        run: |
+          if [ -n "$VERCEL_TOKEN" ] && [ -n "$VERCEL_ORG_ID" ] && [ -n "$VERCEL_PROJECT_ID" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Ship skipped. Add the repository secrets VERCEL_TOKEN, VERCEL_ORG_ID and VERCEL_PROJECT_ID to deploy from main."
+          fi
+      - uses: actions/checkout@v5
+        if: steps.creds.outputs.ready == 'true'
+      - uses: actions/setup-node@v5
+        if: steps.creds.outputs.ready == 'true'
+        with:
+          node-version: 22
+          cache: npm
+      - name: Deploy to production
+        if: steps.creds.outputs.ready == 'true'
+        run: |
+          npx --yes vercel@latest pull --yes --environment=production --token="$VERCEL_TOKEN"
+          npx --yes vercel@latest build --prod --token="$VERCEL_TOKEN"
+          npx --yes vercel@latest deploy --prebuilt --prod --token="$VERCEL_TOKEN"

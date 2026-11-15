@@ -1,0 +1,93 @@
+/* Tokens mirror brand/tokens.json. Motion follows the project's design-engineering
+   rules: custom ease-out, transform/opacity only, under 300ms, press feedback. */
+:root {
+  --brand: #6c4dff; --brand-strong: #5638e0; --brand-tint: #ede9ff; --on-brand: #fff;
+  --ink: #1e1548; --ink-muted: #5b5480; --night: #1e1548;
+  --surface: #faf8ff; --surface-raised: #fff; --border: #dcd6f5;
+  --spark: #ffc83d; --coral: #ff6b5e; --mint: #2ed3a6; --sky: #4db8ff; --danger: #c4322a;
+  --lip: 0 4px 0 #5638e0; --lift: 0 8px 24px rgba(30, 21, 72, 0.12);
+  --font-display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius-sm: 8px; --radius-md: 14px; --radius-lg: 24px; --radius-pill: 999px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand-strong: #a898ff; --brand-tint: #2a2060; --ink: #f4f1ff; --ink-muted: #b8b1da; --night: #0d0926;
+    --surface: #140e33; --surface-raised: #1e1548; --border: #3a2f78; --danger: #ff8a80;
+    --lip: 0 4px 0 #4a31c4; --lift: 0 8px 24px rgba(0, 0, 0, 0.45);
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+body { margin: 0; background: var(--surface); color: var(--ink); font: 400 16px/24px var(--font-body); min-height: 100dvh; }
+main { max-width: 480px; margin: 0 auto; padding: 24px max(16px, env(safe-area-inset-right)) 48px max(16px, env(safe-area-inset-left)); display: grid; gap: 24px; }
+h1, h2 { font-family: var(--font-display); font-weight: 600; margin: 0; text-wrap: balance; }
+h1 { font-size: 36px; line-height: 40px; }
+h2 { font-size: 20px; line-height: 26px; }
+p { margin: 0; }
+a { color: var(--brand-strong); }
+img { max-width: 100%; height: auto; display: block; }
+.muted { color: var(--ink-muted); }
+.caption { font: 500 13px/18px var(--font-body); color: var(--ink-muted); }
+.label { font: 700 12px/16px var(--font-body); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); }
+.stack { display: grid; gap: 12px; }
+.center { justify-items: center; text-align: center; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+
+.btn {
+  font: 700 16px/24px var(--font-body); border: 0; border-radius: var(--radius-md); padding: 12px 24px; min-height: 48px; width: 100%;
+  cursor: pointer; touch-action: manipulation; user-select: none; text-align: center; text-decoration: none; display: inline-block;
+  transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+}
+.btn:active:not(:disabled) { transform: scale(0.97); }
+.btn-primary { background: var(--brand); color: var(--on-brand); box-shadow: var(--lip); }
+.btn-primary:active:not(:disabled) { transform: translateY(3px) scale(0.98); box-shadow: 0 1px 0 var(--brand-strong); }
+.btn-secondary { background: var(--surface-raised); color: var(--brand-strong); border: 2px solid var(--border); }
+.btn-danger { background: var(--surface-raised); color: var(--danger); border: 2px solid var(--border); }
+.btn:disabled { background: var(--border); color: var(--ink-muted); box-shadow: none; cursor: not-allowed; }
+.btn:focus-visible, .opt:focus-visible, input:focus-visible { outline: 3px solid var(--spark); outline-offset: 2px; }
+
+.card { background: var(--surface-raised); border: 2px solid var(--border); border-radius: var(--radius-lg); padding: 24px; display: grid; gap: 16px; }
+.card-lift { box-shadow: var(--lift); }
+
+.check { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; }
+.check input { width: 22px; height: 22px; margin: 1px 0 0; accent-color: var(--brand); flex: none; }
+
+.track { height: 12px; border-radius: var(--radius-pill); background: var(--border); overflow: hidden; }
+.fill { height: 100%; width: 100%; border-radius: var(--radius-pill); background: var(--brand); transform-origin: left; transition: transform 250ms var(--ease-out); }
+
+/* A question enters once per screen: a short fade and rise, then stays put. */
+.enter { transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out); }
+@starting-style { .enter { opacity: 0; transform: translateY(8px); } }
+
+.prompt { font: 600 22px/30px var(--font-display); }
+.memo { font: 600 28px/36px var(--font-display); text-align: center; padding: 32px 16px; background: var(--brand-tint); border-radius: var(--radius-lg); }
+.opt {
+  display: flex; align-items: center; gap: 12px; width: 100%; min-height: 56px; text-align: left; cursor: pointer; touch-action: manipulation; user-select: none;
+  background: var(--surface-raised); color: var(--ink); border: 2px solid var(--border); border-radius: var(--radius-md); padding: 12px 16px; font: 500 16px/24px var(--font-body);
+  transition: transform 160ms var(--ease-out), border-color 160ms ease, background-color 160ms ease;
+}
+.opt:active:not(:disabled) { transform: scale(0.98); }
+.opt[aria-pressed="true"] { border-color: var(--brand); background: var(--brand-tint); }
+.key { width: 28px; height: 28px; flex: none; border-radius: var(--radius-sm); background: var(--brand-tint); color: var(--brand-strong); display: grid; place-items: center; font: 700 13px/1 var(--font-body); }
+.opt[aria-pressed="true"] .key { background: var(--brand); color: var(--on-brand); }
+@media (hover: hover) and (pointer: fine) { .opt:hover:not(:disabled) { border-color: var(--brand); } }
+
+.score-card { background: var(--night); color: #fff; border-radius: var(--radius-lg); padding: 24px; display: grid; gap: 8px; justify-items: start; }
+.score-card .label { color: var(--spark); }
+.score { font: 700 96px/96px var(--font-display); font-variant-numeric: tabular-nums; }
+.pill { padding: 4px 12px; border-radius: var(--radius-pill); background: var(--spark); color: #1e1548; font: 700 13px/18px var(--font-body); }
+.band { font: 700 44px/48px var(--font-display); font-variant-numeric: tabular-nums; }
+.blurred { filter: blur(7px); user-select: none; pointer-events: none; }
+.bars { display: grid; gap: 12px; }
+.bar-row { display: grid; grid-template-columns: 36px 1fr auto; gap: 12px; align-items: center; }
+.error { color: var(--danger); font-weight: 700; }
+
+@media (prefers-reduced-motion: reduce) {
+  .enter { transition: opacity 200ms ease; }
+  @starting-style { .enter { transform: none; } }
+  .btn, .opt, .fill { transition: none; }
+}
