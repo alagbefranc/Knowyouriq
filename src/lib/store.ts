@@ -81,18 +81,21 @@ export class D1Store implements Store {
 
 const holder = globalThis as unknown as { __kyiqMemory?: Store };
 
+/** True only inside the Cloudflare Workers runtime (deployed, or `wrangler dev`). */
+const onWorkers = () => typeof navigator !== "undefined" && navigator.userAgent === "Cloudflare-Workers";
+
 /**
- * The store for this request: D1 when running on Cloudflare with the DB
- * binding, otherwise one in-memory store per server process.
+ * The store for this request: D1 on Cloudflare Workers, otherwise one in-memory
+ * store per server process. On Workers a missing DB binding is an error, never
+ * a silent fall back to memory, so a misconfigured deploy cannot lose data quietly.
  */
 export async function defaultStore(): Promise<Store> {
-  try {
+  if (onWorkers()) {
     const { getCloudflareContext } = await import("@opennextjs/cloudflare");
     const { env } = await getCloudflareContext({ async: true });
     const db = (env as { DB?: D1Like }).DB;
-    if (db) return new D1Store(db);
-  } catch {
-    // Not running on Cloudflare (local `next dev`, `next start`, or tests).
+    if (!db) throw new Error("D1 binding DB is missing. Check d1_databases in wrangler.jsonc.");
+    return new D1Store(db);
   }
   holder.__kyiqMemory ??= new MemoryStore();
   return holder.__kyiqMemory;
