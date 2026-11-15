@@ -1,0 +1,1 @@
+Vector wordmark and mark, built from Fredoka SemiBold outlines. Wordmark for light grounds, reversed wordmark for night and brand grounds, IQ mark for favicon and small sizes, app icon for the home screen and avatars. Inks: ink #1E1548, brand #6C4DFF, spark #FFC83D, white.

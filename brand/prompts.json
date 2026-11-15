@@ -1,0 +1,203 @@
+[
+ {
+  "name": "quo-wave",
+  "prompt": "Original mascot character: a small friendly octopus mascot with a rounded dome head, violet body (#6C4DFF) with a lighter lilac belly, big dark eyes with white highlights, pink cheeks, small open smile, six short chubby tentacles, and a small yellow four-point spark floating just above its head. Standing front-facing, waving one tentacle hello, cheerful. Full body. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "skill-patterns",
+  "prompt": "A single app-style skill icon: a rounded-square tile filled with violet #6C4DFF, containing a three by three grid of simple shapes (circles, squares, triangles) where the last cell is a highlighted yellow shape. Symbol drawn in white with small sunny yellow accents, chunky and simple, readable at small size. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "skill-numbers",
+  "prompt": "A single app-style skill icon: a rounded-square tile filled with sky blue #4DB8FF, containing four ascending bars like a staircase with a small yellow arrow rising above them. Symbol drawn in white with small sunny yellow accents, chunky and simple, readable at small size. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "skill-spatial",
+  "prompt": "A single app-style skill icon: a rounded-square tile filled with mint #2ED3A6, containing an isometric cube with a curved rotation arrow around it. Symbol drawn in white with small sunny yellow accents, chunky and simple, readable at small size. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "skill-verbal",
+  "prompt": "A single app-style skill icon: a rounded-square tile filled with coral #FF6B5E, containing two overlapping speech bubbles joined by a small chain link. Symbol drawn in white with small sunny yellow accents, chunky and simple, readable at small size. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "skill-memory",
+  "prompt": "A single app-style skill icon: a rounded-square tile filled with sunny yellow #FFC83D with symbol in deep indigo and white, containing a two by two set of playing-card tiles, two of them flipped to show the same star. Symbol drawn in white with small sunny yellow accents, chunky and simple, readable at small size. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "game-pattern-sprint",
+  "prompt": "A game thumbnail illustration inside a large rounded-square tile with a deep indigo #1E1548 background: a row of colourful geometric shapes forming a sequence with one empty dashed slot, and speed lines suggesting a sprint. Playful, energetic, simple. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "game-memory-grid",
+  "prompt": "A game thumbnail illustration inside a large rounded-square tile with a deep indigo #1E1548 background: a four by four grid of rounded squares, five of them lit in yellow and mint in an L-shaped pattern, the rest muted violet. Playful, energetic, simple. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "game-word-links",
+  "prompt": "A game thumbnail illustration inside a large rounded-square tile with a deep indigo #1E1548 background: three rounded speech-bubble tokens connected by curved dotted lines like a constellation, one token coral, one mint, one yellow. Playful, energetic, simple. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "reward-streak-flame",
+  "prompt": "A single game reward icon: a friendly rounded flame in coral and sunny yellow with a small lighter inner flame. Chunky, glossy-flat, toy-like, simple. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "reward-xp-bolt",
+  "prompt": "A single game reward icon: a sunny yellow lightning bolt gem with a faceted look. Chunky, glossy-flat, toy-like, simple. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "reward-streak-freeze",
+  "prompt": "A single game reward icon: a sky blue ice crystal shaped like a shield with a small snowflake facet pattern. Chunky, glossy-flat, toy-like, simple. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "reward-trophy",
+  "prompt": "A single game reward icon: a sunny yellow trophy cup with violet base and a small four-point spark on its front. Chunky, glossy-flat, toy-like, simple. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "league-bronze",
+  "prompt": "A single game reward icon: a league rank badge shaped like a shield in warm bronze orange-brown with a darker rim, a small four-point spark emblem in the centre and two small laurel leaves at the bottom. Chunky, glossy-flat, toy-like, simple. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "league-silver",
+  "prompt": "A single game reward icon: a league rank badge shaped like a shield in cool silver grey-blue with a darker rim, a small four-point spark emblem in the centre and two small laurel leaves at the bottom. Chunky, glossy-flat, toy-like, simple. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "league-gold",
+  "prompt": "A single game reward icon: a league rank badge shaped like a shield in sunny gold yellow with a darker rim, a small four-point spark emblem in the centre and two small laurel leaves at the bottom. Chunky, glossy-flat, toy-like, simple. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "league-diamond",
+  "prompt": "A single game reward icon: a league rank badge shaped like a shield in bright sky blue and mint crystal with a darker rim, a small four-point spark emblem in the centre and two small laurel leaves at the bottom. Chunky, glossy-flat, toy-like, simple. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "profile-strategist",
+  "prompt": "A round medallion badge for a personality profile: a circular deep indigo disc with a slightly darker ring border, containing a chess knight piece in white and sunny yellow. Simple, bold, collectible-badge feel. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "profile-pattern-hunter",
+  "prompt": "A round medallion badge for a personality profile: a circular violet disc with a slightly darker ring border, containing a magnifying glass over a small constellation of connected dots in white and sunny yellow. Simple, bold, collectible-badge feel. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "profile-number-whiz",
+  "prompt": "A round medallion badge for a personality profile: a circular sky blue disc with a slightly darker ring border, containing an abacus with three rows of beads in white and sunny yellow. Simple, bold, collectible-badge feel. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "profile-wordsmith",
+  "prompt": "A round medallion badge for a personality profile: a circular coral disc with a slightly darker ring border, containing a feather quill pen with a curling ink line in white and sunny yellow. Simple, bold, collectible-badge feel. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "profile-navigator",
+  "prompt": "A round medallion badge for a personality profile: a circular mint disc with a slightly darker ring border, containing a compass with a pointed needle in white and sunny yellow. Simple, bold, collectible-badge feel. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "profile-memory-keeper",
+  "prompt": "A round medallion badge for a personality profile: a circular amber yellow with symbol in deep indigo and white disc with a slightly darker ring border, containing an old-fashioned key crossing a keyhole in white and sunny yellow. Simple, bold, collectible-badge feel. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "profile-quick-thinker",
+  "prompt": "A round medallion badge for a personality profile: a circular hot coral-pink disc with a slightly darker ring border, containing a small rocket with a speed trail in white and sunny yellow. Simple, bold, collectible-badge feel. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "profile-all-rounder",
+  "prompt": "A round medallion badge for a personality profile: a circular lilac with a violet ring disc with a slightly darker ring border, containing a five-pointed star made of five differently coloured segments in white and sunny yellow. Simple, bold, collectible-badge feel. Flat modern vector illustration, bold simple rounded shapes, subtle soft shading, no outlines, no glow, no halo, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "bg-hero",
+  "prompt": "Seamless-feeling decorative background pattern for a brain-training app: deep indigo #1E1548 field with sparsely scattered small flat shapes \u2014 four-point sparks, dots, plus signs, rings, squiggles, tiny triangles \u2014 in violet, lilac, sunny yellow, coral and mint, evenly spaced, lots of calm empty space, centre left slightly emptier. Flat vector, no text, no letters, no numerals, no characters, no glow. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "size": "1536x1024",
+  "background": "opaque",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "bg-share-card",
+  "prompt": "Vertical poster background for a shareable result card: violet #6C4DFF at the bottom blending in flat stepped bands to deep indigo #1E1548 at the top, large soft concentric rings behind the centre, a few scattered small four-point sparks and dots in sunny yellow and lilac near the edges, big empty central area for content. Flat vector, no text, no letters, no numerals, no characters, no glow. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "size": "1024x1536",
+  "background": "opaque",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "quo-thinking",
+  "prompt": "The same octopus mascot from the reference image, in a thinking pose: one tentacle touching its chin, eyes looking up to one side, small curious smile, the spark above its head replaced by three small yellow dots like a thought forming. Full body. Keep exactly the same character design, proportions, colours and flat vector style as the reference image: violet octopus with lilac belly, big dark eyes, pink cheeks, yellow four-point spark above the head. Flat modern vector illustration, no outlines, no glow, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "ref": "quo-wave",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "quo-celebrate",
+  "prompt": "The same octopus mascot from the reference image, celebrating: jumping with two tentacles raised high, eyes closed in a happy arc, wide open smile, a few pieces of confetti in yellow, coral and mint around it. Full body. Keep exactly the same character design, proportions, colours and flat vector style as the reference image: violet octopus with lilac belly, big dark eyes, pink cheeks, yellow four-point spark above the head. Flat modern vector illustration, no outlines, no glow, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "ref": "quo-wave",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "quo-encourage",
+  "prompt": "The same octopus mascot from the reference image, being gently encouraging: slightly tilted head, soft warm smile, one tentacle giving a small supportive fist-pump, kind eyes. Calm, not sad. Full body. Keep exactly the same character design, proportions, colours and flat vector style as the reference image: violet octopus with lilac belly, big dark eyes, pink cheeks, yellow four-point spark above the head. Flat modern vector illustration, no outlines, no glow, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "ref": "quo-wave",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "quo-sleeping",
+  "prompt": "The same octopus mascot from the reference image, asleep: curled up, eyes closed as two small arcs, peaceful, wearing a tiny sky blue nightcap, the spark above its head dimmed to pale lilac, three tiny lilac bubbles drifting up. Full body. Keep exactly the same character design, proportions, colours and flat vector style as the reference image: violet octopus with lilac belly, big dark eyes, pink cheeks, yellow four-point spark above the head. Flat modern vector illustration, no outlines, no glow, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "ref": "quo-wave",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "quo-detective",
+  "prompt": "The same octopus mascot from the reference image, examining something: holding a large magnifying glass with a coral handle up to one eye so that eye looks bigger through the lens, focused curious expression. Full body. Keep exactly the same character design, proportions, colours and flat vector style as the reference image: violet octopus with lilac belly, big dark eyes, pink cheeks, yellow four-point spark above the head. Flat modern vector illustration, no outlines, no glow, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "ref": "quo-wave",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "quo-trophy",
+  "prompt": "The same octopus mascot from the reference image, proudly holding up a sunny yellow trophy cup with two tentacles, beaming smile. Full body. Keep exactly the same character design, proportions, colours and flat vector style as the reference image: violet octopus with lilac belly, big dark eyes, pink cheeks, yellow four-point spark above the head. Flat modern vector illustration, no outlines, no glow, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "ref": "quo-wave",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "quo-streak",
+  "prompt": "The same octopus mascot from the reference image, holding a small friendly coral and yellow flame carefully in two tentacles like a candle, excited face. Full body. Keep exactly the same character design, proportions, colours and flat vector style as the reference image: violet octopus with lilac belly, big dark eyes, pink cheeks, yellow four-point spark above the head. Flat modern vector illustration, no outlines, no glow, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "ref": "quo-wave",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "game-number-ladder",
+  "prompt": "The same octopus mascot from the reference image, small in the scene, climbing a bright diagonal ladder whose rungs are rows of colourful abacus beads, with a sunny yellow star at the top of the ladder. The whole scene sits inside a large rounded-square tile with a deep indigo #1E1548 background. No humans. Keep exactly the same character design, proportions, colours and flat vector style as the reference image: violet octopus with lilac belly, big dark eyes, pink cheeks, yellow four-point spark above the head. Flat modern vector illustration, no outlines, no glow, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "ref": "quo-wave",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "app-icon",
+  "ref": "quo-wave",
+  "background": "opaque",
+  "prompt": "App icon: a full-bleed square filled edge to edge with flat violet #6C4DFF, no rounded corners, no border. In the centre, a close-up of the face and upper head of the same octopus mascot from the reference image, drawn in a lighter lilac-violet so it stands out from the violet background, big dark eyes with white highlights, pink cheeks, open smile, with the sunny yellow four-point spark above its head. Flat modern vector illustration, no outlines, no glow, no text, no letters.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "hero-quo",
+  "ref": "quo-wave",
+  "size": "1536x1024",
+  "prompt": "Wide hero illustration: the same octopus mascot from the reference image sitting in the centre-right, happily juggling floating puzzle objects with its tentacles \u2014 a mint cube, a coral speech bubble, a sunny yellow triangle, a sky blue ring and a small grid of lilac squares \u2014 arranged in a loose arc around it. Keep exactly the same character design, proportions, colours and flat vector style as the reference image: violet octopus with lilac belly, big dark eyes, pink cheeks, yellow four-point spark above the head. Flat modern vector illustration, no outlines, no glow, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
+  "model": "gpt-image-2.6-sunburst"
+ }
+]

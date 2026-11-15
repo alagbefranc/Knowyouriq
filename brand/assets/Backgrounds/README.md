@@ -1,0 +1,1 @@
+Opaque backgrounds. bg-hero (1536x1024) sits behind the landing hero and Open Graph image with the reversed wordmark. bg-share-card (1024x1536) is the story-format share card ground; place the profile medallion, score card and wordmark over the empty centre.
