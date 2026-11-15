@@ -20,6 +20,7 @@ export const SKILL_LABELS: Record<Skill, string> = {
  *   "img:key@90"     the same picture turned 90 degrees clockwise
  *   "img:key@90m"    mirrored, then turned (a different shape, not a rotation)
  *   "img:ball*3"     three of the picture as one group
+ *   "w:glove"        a picture with its name written under it
  *   "n:16"           a number tile
  *   "?"              the missing piece
  */
@@ -47,6 +48,7 @@ const q = (id: string, skill: Skill, prompt: string, options: string[], answer: 
 });
 const seq = (...tokens: Token[]): Extra => ({ sequence: tokens });
 const img = (...names: string[]) => names.map((n) => `img:${n}`);
+const named = (...names: string[]) => names.map((n) => `w:${n}`);
 const nums = (...values: number[]) => values.map((v) => `n:${v}`);
 const NEXT = "What comes next?";
 const TURNED = "Which one is the same toy, only turned?";
@@ -69,13 +71,14 @@ export const QUESTIONS: readonly Question[] = [
   q("s2", "spatial", TURNED, img("duck@270m", "duck@180", "duck@90m", "duck@0m"), 1, seq("img:duck")),
   q("s3", "spatial", TURNED, img("can@270", "can@90m", "can@180m", "can@0m"), 0, seq("img:can")),
   q("s4", "spatial", "The arrow makes a quarter turn clockwise, twice. Where does it point?", img("arrow@0", "arrow@270", "arrow@180", "arrow@90"), 2, seq("img:arrow@0")),
-  q("s5", "spatial", "How many small cubes make up a 3 by 3 by 3 cube?", nums(9, 18, 27, 36), 2, seq("img:cube")),
+  q("s5", "spatial", "Which arrow points the opposite way?", img("arrow@0", "arrow@270", "arrow@180", "arrow@90"), 1, seq("img:arrow@90")),
 
-  q("v1", "verbal", "Glove is to hand as sock is to …", ["shoe", "foot", "leg", "wool"], 1),
-  q("v2", "verbal", "Hot is to cold as early is to …", ["late", "soon", "morning", "quick"], 0),
-  q("v3", "verbal", "Which word does not belong?", ["apple", "pear", "plum", "carrot"], 3),
-  q("v4", "verbal", "Author is to book as composer is to …", ["piano", "orchestra", "symphony", "concert"], 2),
-  q("v5", "verbal", "Which word is closest in meaning to scarce?", ["rare", "frightening", "small", "sharp"], 0),
+  // Word reasoning, shown as named pictures: analogies and odd-one-out.
+  q("v1", "verbal", "Finish the pair", named("shoe", "foot", "hat", "hand"), 1, seq("w:glove", "is to", "w:hand", "as", "w:sock", "is to", "?")),
+  q("v2", "verbal", "Finish the pair", named("ice", "candle", "tree", "flower"), 0, seq("w:sun", "is to", "w:moon", "as", "w:fire", "is to", "?")),
+  q("v3", "verbal", "Which one does not belong?", named("apple", "pear", "cherry", "carrot"), 3),
+  q("v4", "verbal", "Finish the pair", named("flower", "web", "hive", "tree"), 2, seq("w:bird", "is to", "w:nest", "as", "w:bee", "is to", "?")),
+  q("v5", "verbal", "Which one does not belong?", named("spoon", "hammer", "saw", "wrench"), 0),
 
   q("m1", "memory", "Which one was not there?", img("ball", "star", "gem", "cube"), 2, { memorize: { items: img("star", "cube", "ball", "donut"), ms: 2500 } }),
   q("m2", "memory", "Which came first?", img("pyramid", "gem", "donut", "star"), 0, { memorize: { items: img("pyramid", "gem", "donut", "star", "ball"), ms: 2500 } }),

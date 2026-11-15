@@ -31,11 +31,20 @@ describe("question bank", () => {
     }
   });
   it("only uses pictures that exist in the sprite set", () => {
-    const known = new Set(["ball", "cube", "pyramid", "star", "donut", "gem", "arrow", "key", "duck", "can"]);
+    const known = new Set([
+      "ball", "cube", "pyramid", "star", "donut", "gem", "arrow", "key", "duck", "can",
+      "glove", "hand", "sock", "foot", "shoe", "hat", "sun", "moon", "fire", "ice", "candle", "tree", "flower",
+      "apple", "pear", "cherry", "carrot", "bird", "nest", "bee", "hive", "web", "hammer", "saw", "wrench", "spoon",
+    ]);
     const tokens = QUESTIONS.flatMap((q) => [...(q.sequence ?? []), ...(q.memorize?.items ?? []), ...q.options]);
-    for (const token of tokens.filter((t) => t.startsWith("img:"))) {
-      expect(known.has(token.slice(4).split(/[@*]/)[0]!)).toBe(true);
+    const pictures = tokens.filter((t) => t.startsWith("img:") || t.startsWith("w:"));
+    expect(pictures.length).toBeGreaterThan(80);
+    for (const token of pictures) {
+      expect(known.has(token.slice(token.indexOf(":") + 1).split(/[@*]/)[0]!)).toBe(true);
     }
+  });
+  it("uses a picture or number tile for every answer option", () => {
+    for (const q of QUESTIONS) for (const option of q.options) expect(option).toMatch(/^(img|n|w):/);
   });
   it("looks questions up by id", () => {
     expect(getQuestion("n3")?.sequence).toEqual(["n:1", "n:4", "n:9", "n:16", "?"]);

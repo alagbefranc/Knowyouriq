@@ -105,6 +105,9 @@ mark { background: none; color: var(--spark); }
 .sprite-group .sprite { width: 15px; height: 15px; }
 .opt .sprite-group { width: 92px; padding: 6px; background: transparent; }
 .opt .sprite-group .sprite { width: 24px; height: 24px; }
+.named { display: inline-grid; justify-items: center; gap: 2px; font: 600 13px/16px var(--font-label); letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-2); }
+.opt .named { font-size: 15px; color: var(--text); gap: 6px; }
+.joiner { font: 500 15px/20px var(--font-body); color: var(--text-2); padding: 0 2px; }
 .tile { display: inline-grid; place-items: center; min-width: 52px; height: 56px; padding: 0 10px; border-radius: 14px; background: var(--brand); box-shadow: 0 4px 0 var(--brand-lip); color: #fff; font: 800 26px/1 var(--font-display); font-variant-numeric: tabular-nums; margin-bottom: 4px; }
 .tile-xs { min-width: 30px; height: 34px; padding: 0 6px; font-size: 17px; border-radius: 9px; box-shadow: 0 3px 0 var(--brand-lip); }
 .tile-sm { min-width: 42px; height: 46px; font-size: 21px; }

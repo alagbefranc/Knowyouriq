@@ -1,1 +1,1 @@
-Vector wordmark and mark, cut from Bricolage Grotesque ExtraBold outlines. Wordmark for paper, reversed wordmark for dark grounds, ink mark for the favicon and app icon, violet mark as an alternate. Inks: ink #17161F, form #5638E0, highlight #FFD84D, paper #FDFDFF. app-icon.png is an illustration of Quo, not the product icon.
+Vector wordmark and mark, cut from Bricolage Grotesque ExtraBold outlines. The reversed wordmark (light letters, spark bar) is primary because the product is dark. Inks: text #F6F3FF, ink #17161F, spark #FFD84D.

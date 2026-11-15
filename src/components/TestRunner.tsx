@@ -130,9 +130,9 @@ export function TestRunner(props: { attemptId: string; questions: PublicQuestion
     );
   }
 
-  const pictures = question.options.every((option) => option.startsWith("img:") || option.startsWith("n:"));
+  const pictures = question.options.every((option) => /^(img|n|w):/.test(option));
   const strip = (tokens: string[]) => {
-    const size = tokens.length > 6 ? "xs" : tokens.length > 4 ? "sm" : tokens.length === 1 ? "xl" : "md";
+    const size = tokens.length > 7 ? "xs" : tokens.length > 4 ? "sm" : tokens.length === 1 ? "xl" : "md";
     return tokens.map((token, i) => <Glyph key={i} token={token} size={size} />);
   };
 

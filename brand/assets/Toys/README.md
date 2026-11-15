@@ -1,0 +1,1 @@
+Single objects on transparent backgrounds, 1024px. The pieces every question is built from: six shapes, an arrow, three rotation toys, and 26 everyday objects for the word-reasoning questions. Shown at 30 to 120px.

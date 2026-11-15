@@ -199,5 +199,311 @@
   "size": "1536x1024",
   "prompt": "Wide hero illustration: the same octopus mascot from the reference image sitting in the centre-right, happily juggling floating puzzle objects with its tentacles \u2014 a mint cube, a coral speech bubble, a sunny yellow triangle, a sky blue ring and a small grid of lilac squares \u2014 arranged in a loose arc around it. Keep exactly the same character design, proportions, colours and flat vector style as the reference image: violet octopus with lilac belly, big dark eyes, pink cheeks, yellow four-point spark above the head. Flat modern vector illustration, no outlines, no glow, no drop shadow, crisp clean edges, absolutely no text, letters or numerals, centered with generous margin, fully transparent background. Brand palette: violet #6C4DFF, deep indigo #1E1548, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, lilac #D9D0FF, white.",
   "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "q3-master",
+  "prompt": "Re-create the octopus mascot from the reference image as a 3D vinyl toy character: same design \u2014 rounded dome head, violet body with lighter lilac belly, big glossy dark eyes with white highlights, pink cheeks, small open smile, six short chubby tentacles, and a glowing sunny yellow four-point spark floating above its head. Front-facing, waving one tentacle, cheerful. Full body, centred, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "ref": "quo-wave",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-ball",
+  "prompt": "A glossy coral-red sphere ball. A single object, centred, isolated, filling about 70% of the frame, no ground, no cast shadow on any floor, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-pyramid",
+  "prompt": "A sunny yellow rounded pyramid with a square base, seen from slightly above. A single object, centred, isolated, filling about 70% of the frame, no ground, no cast shadow on any floor, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-star",
+  "prompt": "A puffy violet five-pointed star. A single object, centred, isolated, filling about 70% of the frame, no ground, no cast shadow on any floor, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-donut",
+  "prompt": "A sky blue torus ring donut shape, seen at a three-quarter angle so the hole is clearly visible. A single object, centred, isolated, filling about 70% of the frame, no ground, no cast shadow on any floor, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-gem",
+  "prompt": "A hot pink faceted diamond gemstone. A single object, centred, isolated, filling about 70% of the frame, no ground, no cast shadow on any floor, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-arrow",
+  "prompt": "A chunky sunny yellow arrow pointing straight up, seen exactly flat-on from the front, perfectly vertical and symmetrical left to right. A single object, centred, isolated, filling about 70% of the frame, no ground, no cast shadow on any floor, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-key",
+  "prompt": "A chunky toy key in sky blue lying flat, seen exactly from above: round ring handle at the left, long shaft to the right, with two teeth pointing down near the right end. Clearly asymmetric. A single object, centred, isolated, filling about 70% of the frame, no ground, no cast shadow on any floor, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-duck",
+  "prompt": "A yellow rubber duck seen exactly from the side, facing left, with an orange beak and a small raised tail on the right. A single object, centred, isolated, filling about 70% of the frame, no ground, no cast shadow on any floor, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-can",
+  "prompt": "A mint green toy watering can seen exactly from the side: long spout pointing up-left, loop handle on the right. Clearly asymmetric. A single object, centred, isolated, filling about 70% of the frame, no ground, no cast shadow on any floor, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "pf-strategist",
+  "prompt": "A collectible round medallion coin: deep indigo glossy enamel face with a polished gold rim, and a chess knight piece sculpted in raised relief in the centre in white and gold. Seen straight on. A single object, centred, isolated, filling about 70% of the frame, no ground, no cast shadow on any floor, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "pf-pattern-hunter",
+  "prompt": "A collectible round medallion coin: violet glossy enamel face with a polished gold rim, and a magnifying glass over a small constellation of connected dots sculpted in raised relief in the centre in white and gold. Seen straight on. A single object, centred, isolated, filling about 70% of the frame, no ground, no cast shadow on any floor, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "pf-number-whiz",
+  "prompt": "A collectible round medallion coin: sky blue glossy enamel face with a polished gold rim, and an abacus with three rows of beads sculpted in raised relief in the centre in white and gold. Seen straight on. A single object, centred, isolated, filling about 70% of the frame, no ground, no cast shadow on any floor, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "pf-wordsmith",
+  "prompt": "A collectible round medallion coin: coral glossy enamel face with a polished gold rim, and a feather quill pen sculpted in raised relief in the centre in white and gold. Seen straight on. A single object, centred, isolated, filling about 70% of the frame, no ground, no cast shadow on any floor, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "pf-navigator",
+  "prompt": "A collectible round medallion coin: mint green glossy enamel face with a polished gold rim, and a compass with a pointed needle sculpted in raised relief in the centre in white and gold. Seen straight on. A single object, centred, isolated, filling about 70% of the frame, no ground, no cast shadow on any floor, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "pf-memory-keeper",
+  "prompt": "A collectible round medallion coin: amber yellow glossy enamel face with a polished gold rim, and an old-fashioned key sculpted in raised relief in the centre in white and gold. Seen straight on. A single object, centred, isolated, filling about 70% of the frame, no ground, no cast shadow on any floor, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "pf-quick-thinker",
+  "prompt": "A collectible round medallion coin: hot pink glossy enamel face with a polished gold rim, and a small rocket sculpted in raised relief in the centre in white and gold. Seen straight on. A single object, centred, isolated, filling about 70% of the frame, no ground, no cast shadow on any floor, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "pf-all-rounder",
+  "prompt": "A collectible round medallion coin: lilac glossy enamel face with a polished gold rim, and a five-pointed star made of five differently coloured segments sculpted in raised relief in the centre in white and gold. Seen straight on. A single object, centred, isolated, filling about 70% of the frame, no ground, no cast shadow on any floor, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "alt-poster",
+  "prompt": "The octopus mascot from the reference image leaping joyfully among floating puzzle shapes (cube, sphere, pyramid, star). Bold flat risograph poster illustration: thick simple shapes, limited palette of violet, sunny yellow, coral and cream, visible halftone grain and slight misregistration, deep indigo background. No text.",
+  "ref": "quo-wave",
+  "background": "opaque",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "alt-neon",
+  "prompt": "The octopus mascot from the reference image leaping joyfully among floating puzzle shapes (cube, sphere, pyramid, star). Neon arcade style: glowing outlined shapes in electric violet, cyan, magenta and yellow on a near-black starfield, synthwave grid horizon, luminous bloom. No text.",
+  "ref": "quo-wave",
+  "background": "opaque",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "w-hero",
+  "prompt": "Key art: the same violet octopus toy mascot from the reference image (same design, lilac belly, big glossy eyes, pink cheeks, glowing yellow spark above its head) bursting joyfully upward out of a pile of colourful puzzle toys \u2014 a mint cube, a coral ball, a yellow pyramid, a pink gem, a blue donut ring, a rubber duck \u2014 with sparkles and a few toys floating around it. The background is plain deep indigo #120B33, and all four edges of the image fade into that same plain deep indigo with nothing cut off. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "ref": "q3-master",
+  "size": "1024x1024",
+  "background": "opaque",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "w-patterns",
+  "prompt": "A dreamy plaza paved with giant glossy mosaic tiles in a repeating pattern, lined with rows of giant toy shapes repeating in rhythm (sphere, cube, sphere, cube), with the same violet octopus toy mascot from the reference image (same design, lilac belly, big glossy eyes, pink cheeks, glowing yellow spark above its head) hopping happily along the pattern. The scene is set at night against a deep indigo sky (#120B33) with soft stars; the top and bottom edges of the image fade into plain deep indigo #120B33. The mascot and the main action sit in the central horizontal band of the image. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "ref": "q3-master",
+  "size": "1536x1024",
+  "background": "opaque",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "w-numbers",
+  "prompt": "A playful miniature city made of giant chunky abacus towers and stacks of colourful counting beads and blocks, with the same violet octopus toy mascot from the reference image (same design, lilac belly, big glossy eyes, pink cheeks, glowing yellow spark above its head) pushing a giant bead along a rail. No numerals anywhere. The scene is set at night against a deep indigo sky (#120B33) with soft stars; the top and bottom edges of the image fade into plain deep indigo #120B33. The mascot and the main action sit in the central horizontal band of the image. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "ref": "q3-master",
+  "size": "1536x1024",
+  "background": "opaque",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "w-spatial",
+  "prompt": "Floating islands of impossible toy staircases and giant slowly rotating cubes and tetris-like blocks in the sky, with the same violet octopus toy mascot from the reference image (same design, lilac belly, big glossy eyes, pink cheeks, glowing yellow spark above its head) standing on a floating block, reaching toward a rotating cube. The scene is set at night against a deep indigo sky (#120B33) with soft stars; the top and bottom edges of the image fade into plain deep indigo #120B33. The mascot and the main action sit in the central horizontal band of the image. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "ref": "q3-master",
+  "size": "1536x1024",
+  "background": "opaque",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "w-verbal",
+  "prompt": "A cosy magical library of giant blank books, floating empty speech bubbles and feather quills, warm lantern light, with the same violet octopus toy mascot from the reference image (same design, lilac belly, big glossy eyes, pink cheeks, glowing yellow spark above its head) sitting on a stack of books holding a big blank open book. No letters anywhere. The scene is set at night against a deep indigo sky (#120B33) with soft stars; the top and bottom edges of the image fade into plain deep indigo #120B33. The mascot and the main action sit in the central horizontal band of the image. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "ref": "q3-master",
+  "size": "1536x1024",
+  "background": "opaque",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "w-memory",
+  "prompt": "A magical hall of giant face-down playing cards with plain patterned backs and glowing memory orbs floating like lanterns, with the same violet octopus toy mascot from the reference image (same design, lilac belly, big glossy eyes, pink cheeks, glowing yellow spark above its head) flipping over one giant card that shows a single star shape. The scene is set at night against a deep indigo sky (#120B33) with soft stars; the top and bottom edges of the image fade into plain deep indigo #120B33. The mascot and the main action sit in the central horizontal band of the image. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "ref": "q3-master",
+  "size": "1536x1024",
+  "background": "opaque",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "q3-celebrate",
+  "prompt": "The same violet octopus toy mascot from the reference image (same design, lilac belly, big glossy eyes, pink cheeks, glowing yellow spark above its head), jumping with two tentacles raised high, eyes closed in happy arcs, wide open smile, colourful confetti and a few small stars around it. Full body, centred, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "ref": "q3-master",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "q3-detective",
+  "prompt": "The same violet octopus toy mascot from the reference image (same design, lilac belly, big glossy eyes, pink cheeks, glowing yellow spark above its head), holding a large magnifying glass with a coral handle up to one eye so the eye looks bigger through the lens, focused and curious. Full body, centred, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "ref": "q3-master",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "q3-thinking",
+  "prompt": "The same violet octopus toy mascot from the reference image (same design, lilac belly, big glossy eyes, pink cheeks, glowing yellow spark above its head), one tentacle touching its chin, eyes looking up to one side, small curious smile, three small glowing yellow dots above its head instead of the spark. Full body, centred, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "ref": "q3-master",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-cube",
+  "prompt": "A mint green rounded cube toy block decorated with a few playful raised swirls, dots and a small flower in yellow, coral and violet on its faces, seen at a three-quarter angle. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-glove",
+  "prompt": "A red knitted winter glove with five fingers. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-hand",
+  "prompt": "A friendly cartoon open hand showing its palm, five fingers, warm skin tone. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-sock",
+  "prompt": "A striped sock in sky blue and white. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-foot",
+  "prompt": "A cartoon bare foot seen from the side with five toes, warm skin tone. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-shoe",
+  "prompt": "A coral red sneaker shoe seen from the side. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-hat",
+  "prompt": "A violet woolly bobble hat. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-sun",
+  "prompt": "A smiling-free plain bright yellow sun with chunky rays. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-moon",
+  "prompt": "A pale yellow crescent moon. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-fire",
+  "prompt": "A campfire flame in orange and yellow on two small logs. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-ice",
+  "prompt": "A translucent light blue ice cube. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-candle",
+  "prompt": "A short lit candle in a small holder. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-tree",
+  "prompt": "A round green leafy tree with a brown trunk. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-flower",
+  "prompt": "A pink daisy flower with a yellow centre and a green stem. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-apple",
+  "prompt": "A shiny red apple with a leaf. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-pear",
+  "prompt": "A green pear with a leaf. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-cherry",
+  "prompt": "A pair of red cherries on a stem. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-carrot",
+  "prompt": "An orange carrot with green leafy top. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-bird",
+  "prompt": "A small round blue songbird seen from the side. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-nest",
+  "prompt": "A woven twig bird nest holding three pale blue eggs. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-bee",
+  "prompt": "A chubby yellow and black striped honey bee with small wings. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-hive",
+  "prompt": "A golden dome-shaped beehive with a small round entrance. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-web",
+  "prompt": "A white spider web stretched in a round shape. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-hammer",
+  "prompt": "A toy claw hammer with a wooden handle. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-saw",
+  "prompt": "A toy hand saw with a wooden handle. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-wrench",
+  "prompt": "A toy spanner wrench in sky blue. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "sp-spoon",
+  "prompt": "A shiny silver spoon. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "model": "gpt-image-2.6-sunburst"
  }
 ]
