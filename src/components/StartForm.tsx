@@ -34,7 +34,7 @@ export function StartForm() {
         <span>I am 18 or older.</span>
       </label>
       <button className="btn btn-primary" disabled={!adult || busy} onClick={start}>
-        Start the free test
+        Start the free test <span className="arrow" aria-hidden="true">→</span>
       </button>
       {error && <p className="error" role="alert">{error}</p>}
     </div>

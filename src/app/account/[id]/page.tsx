@@ -17,8 +17,8 @@ export default async function AccountPage({ params }: { params: Promise<{ id: st
   return (
     <main>
       <h1>Account</h1>
-      <section className="card">
-        <h2>Your plan</h2>
+      <section className="section">
+        <span className="label">Your plan</span>
         <CancelPlan
           attemptId={id}
           ended={plan.status === "ended"}
@@ -27,7 +27,7 @@ export default async function AccountPage({ params }: { params: Promise<{ id: st
           nextCharge={plan.nextCharge ? `${formatMoney(plan.nextCharge.amountCents)} on ${formatDate(plan.nextCharge.at)}` : null}
         />
       </section>
-      <a className="btn btn-secondary" href={`/report/${id}`}>Back to my report</a>
+      <a className="btn btn-secondary" href={`/report/${id}`}>Back to my report <span className="arrow" aria-hidden="true">→</span></a>
     </main>
   );
 }

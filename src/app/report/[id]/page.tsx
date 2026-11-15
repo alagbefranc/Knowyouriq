@@ -1,4 +1,6 @@
 import { notFound, redirect } from "next/navigation";
+import { BellCurve } from "@/components/BellCurve";
+import { Bubble } from "@/components/Bubble";
 import { formatDate, formatMoney } from "@/lib/billing";
 import { AppError } from "@/lib/errors";
 import { PROFILES } from "@/lib/profile";
@@ -21,40 +23,37 @@ export default async function ReportPage({ params }: { params: Promise<{ id: str
 
   return (
     <main>
-      <h1>Your report</h1>
-      <section className="score-card beat" style={{ "--s": 0.96 } as React.CSSProperties} aria-label="Your estimate">
+      <section className="stack" aria-label="Your estimate">
         <span className="label">Your estimate</span>
-        <span className="score" data-testid="estimate">{result.estimate}</span>
-        <span>Likely range {result.low} to {result.high}</span>
-        <span className="pill">Higher than {result.percentile}% of test takers</span>
+        <span className="score beat" style={{ "--y": "10px" } as React.CSSProperties} data-testid="estimate">{result.estimate}</span>
+        <p>
+          Likely range {result.low} to {result.high}. <mark><strong>Higher than {result.percentile}% of test takers.</strong></mark>
+        </p>
+        <BellCurve estimate={result.estimate} low={result.low} high={result.high} percentile={result.percentile} />
       </section>
-      <section className="card">
+      <section className="section">
         <h2>Your five skills</h2>
-        <div className="bars">
-          {SKILLS.map((skill, i) => (
-            <div className="bar-row" key={skill}>
-              <img src={`/brand/skill-${skill}.webp`} alt="" width={36} height={36} />
-              <div className="stack" style={{ gap: 4 }}>
-                <span>{SKILL_LABELS[skill]}</span>
-                <div className="track"><div className="fill" style={{ "--p": result.sections[skill] * 20, "--d": `${[0, 60, 110, 150, 180][i]}ms` } as React.CSSProperties} /></div>
-              </div>
-              <strong>{result.sections[skill]}/5</strong>
+        <div className="lines">
+          {SKILLS.map((skill, row) => (
+            <div key={skill}>
+              <span>{SKILL_LABELS[skill]}</span>
+              <span className="dots" role="img" aria-label={`${result.sections[skill]} of 5`}>
+                {[0, 1, 2, 3, 4].map((k) => (
+                  // Marks land row by row with shrinking gaps; this screen is seen once.
+                  <Bubble key={k} small filled={k < result.sections[skill]} className="beat" style={{ "--d": `${[0, 60, 110, 150, 180][row]! + k * 25}ms`, "--s": 0.8 } as React.CSSProperties} />
+                ))}
+              </span>
             </div>
           ))}
         </div>
       </section>
-      <section className="card">
-        <div className="row" style={{ justifyContent: "flex-start" }}>
-          <img src={`/brand/profile-${result.profile}.webp`} alt="" width={72} height={72} />
-          <div>
-            <span className="label">Your cognitive style · for fun</span>
-            <h2 data-testid="profile">{profile.name}</h2>
-          </div>
-        </div>
+      <section className="section">
+        <span className="label">Your cognitive style · for fun</span>
+        <span className="stamp" data-testid="profile">{profile.name}</span>
         <p>{profile.blurb}</p>
       </section>
-      <section className="card">
-        <h2>Your plan</h2>
+      <section className="section">
+        <span className="label">Your plan</span>
         {plan.nextCharge ? (
           <p data-testid="plan-line">
             Renews on {formatDate(plan.nextCharge.at)} for {formatMoney(plan.nextCharge.amountCents)}.
@@ -62,7 +61,7 @@ export default async function ReportPage({ params }: { params: Promise<{ id: str
         ) : (
           <p data-testid="plan-line">Cancelled. You keep access until {formatDate(plan.accessUntil)}.</p>
         )}
-        <a className="btn btn-secondary" href={`/account/${id}`}>Manage plan</a>
+        <a className="btn btn-secondary" href={`/account/${id}`}>Manage plan <span className="arrow" aria-hidden="true">→</span></a>
       </section>
       <p className="caption">
         This is an estimate from a short online test using provisional scoring. It is not a clinical assessment.

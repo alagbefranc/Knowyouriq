@@ -15,8 +15,8 @@ export const viewport: Viewport = {
   interactiveWidget: "resizes-content",
   colorScheme: "light dark",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#faf8ff" },
-    { media: "(prefers-color-scheme: dark)", color: "#140e33" },
+    { media: "(prefers-color-scheme: light)", color: "#fdfdff" },
+    { media: "(prefers-color-scheme: dark)", color: "#15141c" },
   ],
 };
 
@@ -28,10 +28,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fredoka:wght@500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=Barlow+Condensed:wght@600;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <div className="sheet">
+          <header className="masthead">
+            <a href="/" aria-label="KnowYourIQ home">
+              <picture>
+                <source srcSet="/brand/knowyouriq-wordmark-reversed.svg" media="(prefers-color-scheme: dark)" />
+                <img src="/brand/knowyouriq-wordmark.svg" alt="KnowYourIQ" width={160} height={34} />
+              </picture>
+            </a>
+            <span className="label">Form KYIQ-25</span>
+          </header>
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

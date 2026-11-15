@@ -30,7 +30,8 @@ export function Paywall(props: { attemptId: string; heading: string; terms: stri
   }
 
   return (
-    <section className="card card-lift" aria-label="Start your trial">
+    <section className="section" aria-label="Start your trial">
+      <span className="label">Payment</span>
       <h2>{props.heading}</h2>
       <p data-testid="terms">
         <strong>{props.terms}</strong> Your plan renews on {props.renewsOn}.

@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { Bubble } from "@/components/Bubble";
 import { SKILL_LABELS, type PublicQuestion } from "@/lib/questions";
 
 const LETTERS = ["A", "B", "C", "D", "E"];
@@ -15,6 +16,23 @@ async function post(url: string, body?: unknown) {
   const data = await response.json();
   if (!response.ok) throw new Error(data.message ?? "Request failed");
   return data;
+}
+
+/** Progress as the form's timing track: one mark per question, in groups of five. */
+function Marks(props: { total: number; done: number; current?: boolean }) {
+  const groups = Array.from({ length: props.total / 5 }, (_, g) => g);
+  return (
+    <div className="marks" role="progressbar" aria-label="Questions answered" aria-valuemin={0} aria-valuemax={props.total} aria-valuenow={props.done}>
+      {groups.map((g) => (
+        <span key={g}>
+          {[0, 1, 2, 3, 4].map((k) => {
+            const n = g * 5 + k;
+            return <i key={k} data-s={n < props.done ? "done" : n === props.done && props.current ? "now" : undefined} />;
+          })}
+        </span>
+      ))}
+    </div>
+  );
 }
 
 export function TestRunner(props: { attemptId: string; questions: PublicQuestion[]; answeredIds: string[] }) {
@@ -83,13 +101,16 @@ export function TestRunner(props: { attemptId: string; questions: PublicQuestion
   if (sectionDone) {
     const last = index >= questions.length;
     return (
-      <div className="stack center" key={`done-${index}`}>
-        {/* Seen five times a test: Quo leads, the words follow in shrinking gaps, all done in about 300ms. */}
-        <img className="beat" style={{ "--s": 0.92 } as React.CSSProperties} src="/brand/quo-thinking.webp" alt="" width={160} height={160} />
-        <h1 className="beat" style={{ "--d": "50ms", "--y": "8px" } as React.CSSProperties}>Section complete: {sectionDone}</h1>
-        <p className="muted beat" style={{ "--d": "90ms", "--y": "4px" } as React.CSSProperties}>{last ? "That was the last one." : `${questions.length - index} questions to go.`}</p>
+      <div className="stack" key={`done-${index}`}>
+        {/* Seen five times a test: the heading leads, the rest follows in shrinking gaps, done in about 300ms. */}
+        <Marks total={questions.length} done={index} />
+        <span className="label">Section {index / 5} of 5</span>
+        <h1 className="beat" style={{ "--y": "8px" } as React.CSSProperties}>
+          Section complete: <mark>{sectionDone}</mark>
+        </h1>
+        <p className="muted beat" style={{ "--d": "50ms", "--y": "4px" } as React.CSSProperties}>{last ? "That was the last one." : `${questions.length - index} questions to go.`}</p>
         <button className="btn btn-primary" onClick={() => setSectionDone(null)}>
-          {last ? "See my result" : "Continue"}
+          {last ? "See my result" : "Continue"} <span className="arrow" aria-hidden="true">→</span>
         </button>
       </div>
     );
@@ -97,8 +118,9 @@ export function TestRunner(props: { attemptId: string; questions: PublicQuestion
 
   if (!question) {
     return (
-      <div className="stack center">
-        <img src="/brand/quo-detective.webp" alt="" width={160} height={160} />
+      <div className="stack">
+        <Marks total={questions.length} done={questions.length} />
+        <span className="label">Marking</span>
         <h1>Scoring your answers</h1>
         {error ? <p className="error" role="alert">{error}</p> : <p className="muted">Comparing each section with the norm group.</p>}
       </div>
@@ -107,12 +129,10 @@ export function TestRunner(props: { attemptId: string; questions: PublicQuestion
 
   return (
     <div className="stack">
+      <Marks total={questions.length} done={index} current />
       <div className="row label">
         <span>{SKILL_LABELS[question.skill]}</span>
         <span data-testid="position">{index + 1} of {questions.length}</span>
-      </div>
-      <div className="track" role="progressbar" aria-valuemin={0} aria-valuemax={questions.length} aria-valuenow={index}>
-        <div className="fill" style={{ "--p": (index / questions.length) * 100 } as React.CSSProperties} />
       </div>
       <div className="stack enter" key={`${question.id}-${memorizing ? "show" : "ask"}`}>
         {memorizing && question.memorize ? (
@@ -124,19 +144,21 @@ export function TestRunner(props: { attemptId: string; questions: PublicQuestion
         ) : (
           <>
             <p className="prompt" data-testid="prompt">{question.prompt}</p>
-            {question.options.map((option, choice) => (
-              <button
-                key={option}
-                className="opt"
-                data-testid="option"
-                aria-pressed={selected === choice}
-                disabled={selected !== null}
-                onClick={() => choose(choice)}
-              >
-                <span className="key">{LETTERS[choice]}</span>
-                {option}
-              </button>
-            ))}
+            <div className="opts">
+              {question.options.map((option, choice) => (
+                <button
+                  key={option}
+                  className="opt"
+                  data-testid="option"
+                  aria-pressed={selected === choice}
+                  disabled={selected !== null}
+                  onClick={() => choose(choice)}
+                >
+                  <Bubble letter={LETTERS[choice]} />
+                  {option}
+                </button>
+              ))}
+            </div>
           </>
         )}
       </div>
