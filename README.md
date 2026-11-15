@@ -41,11 +41,9 @@ When adding a feature: unit tests for each new function, an integration test for
 
 The app deploys to Cloudflare Workers through OpenNext and stores data in D1.
 
-One-time setup:
+The D1 database `knowyouriq` exists and its id is in `wrangler.jsonc`.
 
-1. `npx wrangler login`
-2. `npm run db:create`, then copy the printed `database_id` into `wrangler.jsonc`.
-3. In the GitHub repository settings, add the secrets `CLOUDFLARE_API_TOKEN` (with Workers and D1 edit permission) and `CLOUDFLARE_ACCOUNT_ID`.
+One-time setup still needed for automatic deploys: in the GitHub repository settings, add the secrets `CLOUDFLARE_API_TOKEN` (with Workers Scripts and D1 edit permission) and `CLOUDFLARE_ACCOUNT_ID`.
 
 After that, every push to `main` that passes the pipeline migrates the database and deploys.
 

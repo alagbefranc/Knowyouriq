@@ -11,8 +11,7 @@
     {
       "binding": "DB",
       "database_name": "knowyouriq",
-      // Replace with the id printed by `npm run db:create`. Deploys fail until this is set.
-      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "database_id": "b7a226a4-e598-4c5d-bb3c-24fc845d5363",
       "migrations_dir": "migrations"
     }
   ]
