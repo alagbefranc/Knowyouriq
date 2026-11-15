@@ -7,3 +7,6 @@ playwright-report/
 !.env.example
 *.tsbuildinfo
 brand/raw/
+.open-next/
+.wrangler/
+.dev.vars

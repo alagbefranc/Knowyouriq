@@ -12,9 +12,16 @@
     "test:integration": "vitest run tests/integration",
     "test:e2e": "playwright test --project=e2e",
     "test:perf": "playwright test --project=perf",
-    "ci": "npm run typecheck && npm run test && npm run build && npm run test:e2e && npm run test:perf"
+    "ci": "npm run typecheck && npm run test && npm run build && npm run test:e2e && npm run test:perf",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:preview": "opennextjs-cloudflare preview --port 8787 --var PAYMENTS_MODE:mock",
+    "cf:deploy": "opennextjs-cloudflare deploy",
+    "db:create": "wrangler d1 create knowyouriq",
+    "db:migrate:local": "wrangler d1 migrations apply knowyouriq --local",
+    "db:migrate": "wrangler d1 migrations apply knowyouriq --remote"
   },
   "dependencies": {
+    "@opennextjs/cloudflare": "^1.20.17",
     "next": "16.4.6",
     "react": "19.3.1",
     "react-dom": "19.3.1"
@@ -25,7 +32,8 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "typescript": "5.9.3",
-    "vitest": "^5.1.0"
+    "vitest": "^5.1.0",
+    "wrangler": "^4.162.0"
   },
   "engines": {
     "node": ">=22"

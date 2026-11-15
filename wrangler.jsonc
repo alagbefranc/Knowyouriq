@@ -1,0 +1,21 @@
+{
+  // Cloudflare Workers configuration for KnowYourIQ (built with OpenNext).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "knowyouriq",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
+  "observability": { "enabled": true },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "knowyouriq",
+      // Replace with the id printed by `npm run db:create`. Deploys fail until this is set.
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ]
+  // PAYMENTS_MODE is deliberately not set here: without a real payment
+  // processor, checkout on the deployed site refuses instead of granting access.
+}

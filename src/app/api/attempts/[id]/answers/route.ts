@@ -5,7 +5,7 @@ export async function POST(request: Request, context: { params: Promise<{ id: st
   try {
     const { id } = await context.params;
     const body = await request.json().catch(() => ({}));
-    return Response.json(submitAnswer({ attemptId: id, questionId: body?.questionId, choice: body?.choice, ms: body?.ms }));
+    return Response.json(await submitAnswer({ attemptId: id, questionId: body?.questionId, choice: body?.choice, ms: body?.ms }));
   } catch (error) {
     return errorResponse(error);
   }

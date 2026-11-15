@@ -12,7 +12,7 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
   const { id } = await params;
   let teaser: Teaser;
   try {
-    teaser = getTeaser(id);
+    teaser = await getTeaser(id);
   } catch (error) {
     if (error instanceof AppError && error.status === 404) notFound();
     if (error instanceof AppError && error.code === "attempt_incomplete") redirect(`/test/${id}`);
@@ -20,7 +20,7 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
   }
   let subscribed = false;
   try {
-    subscribed = getPlan(id).status !== "ended";
+    subscribed = (await getPlan(id)).status !== "ended";
   } catch {
     subscribed = false;
   }

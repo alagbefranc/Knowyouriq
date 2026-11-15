@@ -1,6 +1,9 @@
 import { defineConfig, devices } from "@playwright/test";
 
 const PORT = 3100;
+// Set BASE_URL to test a server that is already running (for example the
+// Cloudflare Workers preview on :8787) instead of starting `next start`.
+const BASE_URL = process.env.BASE_URL;
 
 // Both projects run against the production build (`npm run build` first).
 // Payments run in mock mode: no real card is ever charged by these tests.
@@ -12,7 +15,7 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [["github"], ["html", { open: "never" }]] : "list",
   use: {
-    baseURL: `http://localhost:${PORT}`,
+    baseURL: BASE_URL ?? `http://localhost:${PORT}`,
     trace: "off",
   },
   projects: [
@@ -31,7 +34,7 @@ export default defineConfig({
       use: { ...devices["Pixel 7"] },
     },
   ],
-  webServer: {
+  webServer: BASE_URL ? undefined : {
     command: "npm run start",
     url: `http://localhost:${PORT}`,
     reuseExistingServer: !process.env.CI,

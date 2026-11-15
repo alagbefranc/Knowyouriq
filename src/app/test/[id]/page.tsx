@@ -7,7 +7,7 @@ export default async function TestPage({ params }: { params: Promise<{ id: strin
   const { id } = await params;
   let view: AttemptView;
   try {
-    view = viewAttempt(id);
+    view = await viewAttempt(id);
   } catch (error) {
     if (error instanceof AppError && error.status === 404) notFound();
     throw error;

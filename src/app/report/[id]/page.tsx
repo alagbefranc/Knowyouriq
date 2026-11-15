@@ -8,9 +8,9 @@ import { getReport } from "@/lib/service";
 
 export default async function ReportPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  let report: ReturnType<typeof getReport>;
+  let report: Awaited<ReturnType<typeof getReport>>;
   try {
-    report = getReport(id);
+    report = await getReport(id);
   } catch (error) {
     if (error instanceof AppError && error.status === 404) notFound();
     if (error instanceof AppError && error.code === "attempt_incomplete") redirect(`/test/${id}`);

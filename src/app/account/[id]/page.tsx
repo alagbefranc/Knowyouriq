@@ -8,7 +8,7 @@ export default async function AccountPage({ params }: { params: Promise<{ id: st
   const { id } = await params;
   let plan: PlanView;
   try {
-    plan = getPlan(id);
+    plan = await getPlan(id);
   } catch (error) {
     if (error instanceof AppError && error.status === 404) notFound();
     if (error instanceof AppError && error.status === 402) redirect(`/result/${id}`);

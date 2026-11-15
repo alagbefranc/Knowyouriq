@@ -57,7 +57,7 @@ describe("API", () => {
     const ok = await pay(post({ attemptId: id, consent: true }));
     expect(ok.status).toBe(201);
     expect(Date.parse((await ok.json()).renewsOn)).toBeGreaterThan(Date.now());
-    expect(getReport(id).result.estimate).toBe(140);
+    expect((await getReport(id)).result.estimate).toBe(140);
   });
   it("checkout returns 503 when payments are not configured", async () => {
     const id = await finishedAttempt();
@@ -71,6 +71,6 @@ describe("API", () => {
     const response = await cancel(post(), ctx(id));
     expect(response.status).toBe(200);
     expect((await response.json()).cancelled).toBe(true);
-    expect(getReport(id).plan.nextCharge).toBeNull();
+    expect((await getReport(id)).plan.nextCharge).toBeNull();
   });
 });

@@ -37,7 +37,8 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules",
-    "brand"
+    ".open-next",
+    "brand",
+    "node_modules"
   ]
 }

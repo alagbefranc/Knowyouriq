@@ -20,28 +20,80 @@ export interface Attempt {
 }
 
 export interface Store {
-  getAttempt(id: string): Attempt | undefined;
-  saveAttempt(attempt: Attempt): void;
+  getAttempt(id: string): Promise<Attempt | undefined>;
+  saveAttempt(attempt: Attempt): Promise<void>;
 }
+
+const DATE_KEYS = new Set(["createdAt", "completedAt", "startedAt", "currentPeriodEnd", "cancelledAt", "reminderSentAt", "refundedAt", "at"]);
+
+/** Attempts are stored as JSON. Dates go in as ISO strings and come back as Dates. */
+export function serializeAttempt(attempt: Attempt): string {
+  return JSON.stringify(attempt);
+}
+
+export function deserializeAttempt(json: string): Attempt {
+  return JSON.parse(json, (key, value) => (DATE_KEYS.has(key) && typeof value === "string" ? new Date(value) : value)) as Attempt;
+}
+
+/** In-memory store for local development and tests. Data is lost on restart. */
+export class MemoryStore implements Store {
+  private attempts = new Map<string, string>();
+  async getAttempt(id: string) {
+    const json = this.attempts.get(id);
+    return json ? deserializeAttempt(json) : undefined;
+  }
+  async saveAttempt(attempt: Attempt) {
+    this.attempts.set(attempt.id, serializeAttempt(attempt));
+  }
+}
+
+/** The part of Cloudflare's D1 API this app uses. */
+export interface D1Like {
+  prepare(sql: string): {
+    bind(...values: unknown[]): {
+      first<T = Record<string, unknown>>(): Promise<T | null>;
+      run(): Promise<unknown>;
+    };
+  };
+}
+
+/** Durable store on Cloudflare D1. Schema: migrations/0001_attempts.sql. */
+export class D1Store implements Store {
+  constructor(private readonly db: D1Like) {}
+
+  async getAttempt(id: string) {
+    const row = await this.db.prepare("SELECT data FROM attempts WHERE id = ?").bind(id).first<{ data: string }>();
+    return row ? deserializeAttempt(row.data) : undefined;
+  }
+
+  async saveAttempt(attempt: Attempt) {
+    const status = attempt.subscription?.status ?? null;
+    await this.db
+      .prepare(
+        `INSERT INTO attempts (id, data, created_at, completed_at, subscription_status, updated_at)
+         VALUES (?1, ?2, ?3, ?4, ?5, ?6)
+         ON CONFLICT(id) DO UPDATE SET data = ?2, completed_at = ?4, subscription_status = ?5, updated_at = ?6`,
+      )
+      .bind(attempt.id, serializeAttempt(attempt), attempt.createdAt.toISOString(), attempt.completedAt?.toISOString() ?? null, status, new Date().toISOString())
+      .run();
+  }
+}
+
+const holder = globalThis as unknown as { __kyiqMemory?: Store };
 
 /**
- * In-memory store: enough for development and the test pipeline. Data is lost
- * on restart, so this must be replaced by the database before launch.
+ * The store for this request: D1 when running on Cloudflare with the DB
+ * binding, otherwise one in-memory store per server process.
  */
-export class MemoryStore implements Store {
-  private attempts = new Map<string, Attempt>();
-  getAttempt(id: string) {
-    return this.attempts.get(id);
+export async function defaultStore(): Promise<Store> {
+  try {
+    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
+    const { env } = await getCloudflareContext({ async: true });
+    const db = (env as { DB?: D1Like }).DB;
+    if (db) return new D1Store(db);
+  } catch {
+    // Not running on Cloudflare (local `next dev`, `next start`, or tests).
   }
-  saveAttempt(attempt: Attempt) {
-    this.attempts.set(attempt.id, attempt);
-  }
-}
-
-const holder = globalThis as unknown as { __kyiqStore?: Store };
-
-/** One store per server process, shared by every route and page. */
-export function defaultStore(): Store {
-  holder.__kyiqStore ??= new MemoryStore();
-  return holder.__kyiqStore;
+  holder.__kyiqMemory ??= new MemoryStore();
+  return holder.__kyiqMemory;
 }
