@@ -1,1 +1,1 @@
-Quo in eight poses on transparent backgrounds, 1024px, plus the wide hero scene. Use one pose per screen at 120 to 240px. Never beside prices, consent or cancel controls.
+Illustration library. Quo in eight poses on transparent backgrounds, 1024px, plus the wide hero scene. In the product only quo-celebrate is used, once, as the reward sticker on a finished test. The other poses are for marketing, email and future training screens. Never beside prices, consent or cancel controls.

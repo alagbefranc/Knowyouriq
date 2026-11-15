@@ -4,7 +4,7 @@ A reasoning test you play, and a five-minute habit after it.
 
 KnowYourIQ is a mobile-first web app: a 25-question test with a game feel, a personal report, and a daily training loop with streaks, XP and leagues. The brand has to do two jobs at once. It must feel playful enough that people finish the test and come back tomorrow, and trustworthy enough that people believe the score and are comfortable paying.
 
-Version 1 of this sheet. Illustrations were generated with an image model and have not yet been redrawn as vectors by a designer; the logo files are true vectors.
+Version 2 of this sheet. The look is the answer sheet: the interface borrows from the printed test form it replaces. The logo and everything on screen is drawn in code as true vectors. The illustration library was generated with an image model and is kept for marketing, not for the product screens.
 
 ## Personality
 
@@ -29,48 +29,44 @@ Claims we never make: that training raises IQ, prevents decline or treats anythi
 
 ## Logo
 
-The wordmark is KnowYourIQ in Fredoka SemiBold, one word, three capitals, with IQ in `brand` and a `spark` four-point star off the top right of the Q. The mark is a `brand` rounded tile with a white IQ and the spark.
+The wordmark is KnowYourIQ in Bricolage Grotesque ExtraBold, one word, three capitals, in ink, with a highlighter swipe across the lower half of IQ. The mark is an ink square with IQ in paper and a highlighter bar beneath.
 
-- Use `knowyouriq-wordmark.svg` on `surface` and `surface-raised`, and `knowyouriq-wordmark-reversed.svg` on `night` and `brand`.
+- Use `knowyouriq-wordmark.svg` on paper. On dark grounds use `knowyouriq-wordmark-reversed.svg`, where the highlighter runs as an underline so the letters stay readable.
 - Clear space on every side equals the height of the K.
 - Minimum width: wordmark 96px, mark 24px.
 - Do not recolour, outline, rotate, add a shadow, or set the name in another typeface. Do not write Know Your IQ, KnowyourIQ or KYIQ.
-- The app icon (`app-icon.png`) is Quo's face on `brand`. Use it for the home-screen icon and social avatars; use the IQ mark for the favicon and anywhere under 32px.
+- `knowyouriq-mark.svg` is the favicon and app icon. `app-icon.png` (Quo's face) belongs to the illustration library and is not the product icon.
 
 ## Colour
 
-Violet is the brand. Spark yellow is the reward. Everything else is support.
+Three inks on paper, each with one job.
 
-- `brand` carries primary actions, selection and the app icon. White text on it.
-- `spark` is spent once per screen: the XP count, the streak, the percentile chip. `ink` text on it, never white.
-- `night` is the stage for moments: hero band, game tiles, score card, share card.
-- `coral`, `mint`, `sky` plus `brand` and `spark` identify the five skills. They are decorative; they never mean error or success. On skill tiles the symbol also differs, so colour is not the only signal.
-- `success` and `danger` are for training feedback and real errors only. The test never shows right or wrong.
-- Pricing and renewal text is always `ink` on `surface` or `surface-raised`.
-
-| Skill | Colour token | Asset |
-| --- | --- | --- |
-| Patterns | `brand` | `skill-patterns.png` |
-| Numbers | `sky` | `skill-numbers.png` |
-| Spatial | `mint` | `skill-spatial.png` |
-| Verbal | `coral` | `skill-verbal.png` |
-| Memory | `spark` | `skill-memory.png` |
+- `form` is what the form prints: labels, empty bubbles, the curve, the stamp. If the product is telling you something about itself, it is violet.
+- `ink` is what the person marks and reads: text, filled bubbles, primary buttons, timing marks.
+- `highlight` is the highlighter: one swipe per screen on the thing worth noticing. In dark theme it runs as an underline, because light text over yellow fails contrast.
+- `form-soft` and `paper-2` are the only tints. There are no gradients and no shadows.
+- Skills are told apart by name and position, never by colour.
+- Pricing and renewal text is always `ink` on `paper`, with no highlighter.
 
 ## Typography
 
-Two hosted Google Fonts families, no font files.
+Three hosted Google Fonts families, no font files.
 
-- **Fredoka** (500 to 700) for the logo, scores, headlines and numbers in chips. Rounded and friendly; use it large and sparingly.
-- **DM Sans** (400, 500, 700) for everything people read or tap, including all billing text.
+- **Bricolage Grotesque** (700, 800) for the logo, headlines, the question and the big numbers. Tight tracking, left-aligned.
+- **Barlow** (400, 500, 700) for everything people read or tap, including all billing text.
+- **Barlow Condensed** (600, 700) for the form's own voice: uppercase labels, counters, axis numbers, the stamp.
 
 The `score` style is reserved for the estimate. Billing terms use `body`, never `caption`.
 
 ## Shape and layout
 
-- Corners are generous: `radius-md` on controls, `radius-lg` on cards and tiles, pills for bars and chips.
-- Primary buttons sit on a solid `lip` shadow that collapses on press. No blurred shadows except `lift` on sheets.
-- One column, phone first, `space-4` side gutter, 48px minimum tap height.
-- The four-point spark is the brand's one repeating shape: above Quo, on league badges, in background patterns at a `space-12` pitch.
+- One column, left-aligned. Nothing is centred.
+- A column of timing marks runs down the left edge of every screen, as on a machine-read answer sheet.
+- Sections are separated by a 2px ink rule; rows inside a section by form-soft hairlines. There are no cards.
+- Corners are square, except bubbles (round) and buttons, the fees box and the stamp (`radius-sm`).
+- Answers are bubbles. Progress is 25 timing marks in five groups. Results are read off a number line or the bell curve. Locked report lines are redacted with ink bars, not blurred.
+- Two things sit askew on purpose: the specimen item on the landing page (1.5 degrees) and the stamp (3 degrees). Everything else is square to the sheet.
+- 18px side gutter, 52px minimum button height, 60px answer rows.
 
 ## Motion
 
@@ -81,45 +77,36 @@ Motion follows Emil Kowalski's design-engineering rules (the skills in `.claude/
 | `--ease-out` | `cubic-bezier(0.23, 1, 0.32, 1)` | Everything that enters or responds. Never `ease-in` |
 | `--dur-press` | 120ms | Press feedback on buttons and answer options, `scale(0.97)` |
 | `--dur-fast` | 160ms | Colour changes; the entrance of each question |
-| `--dur-base` | 220ms | Progress bar; section-break beats |
-| `--dur-moment` | 500ms | Once-per-visit moments only: landing hero, report bars |
+| `--dur-base` | 220ms | Section-break beats |
+| `--dur-moment` | 500ms | Once-per-visit moments only: the landing hero |
 
 - **The more often it is seen, the less it moves.** A new question appears 25 times a test, so it only fades with a 4px rise. The landing hero and the report are seen once, so they get a staggered entrance.
 - **Only `transform` and `opacity` animate.** Nothing starts from `scale(0)`. No `transition: all`.
 - **One entrance per container.** Answer options arrive with their question; they are not staggered.
-- **Staggers have shrinking gaps** and the lead (Quo) moves most. Buttons are never delayed and can be tapped at once.
+- **Staggers have shrinking gaps** and the lead (the headline) moves most. On the report, skill bubbles land row by row. Buttons are never delayed and can be tapped at once.
 - **Nothing moves on price, consent or cancel controls.** Colour changes only.
 - **Hover styles** apply only to real pointers. **Reduced motion** keeps fades and drops movement and delays.
 
 ## Quo, the mascot
 
-Quo is a small violet octopus with a spark above its head. Quo reacts; Quo does not talk in speech bubbles or deliver bad news.
+Quo is a small violet octopus with a spark above its head. In the product Quo appears exactly once: as the reward sticker stuck on a finished test, rotated 9 degrees with a white sticker edge, the way a teacher puts a sticker on a good paper.
 
-| Pose | Asset | Where it appears |
-| --- | --- | --- |
-| Wave | `quo-wave.png` | Landing page, welcome back |
-| Thinking | `quo-thinking.png` | Section-break cards, loading |
-| Detective | `quo-detective.png` | The calculating screen, How scoring works |
-| Celebrate | `quo-celebrate.png` | Test complete, level up, league promotion |
-| Trophy | `quo-trophy.png` | Achievements, weekly league result |
-| Streak | `quo-streak.png` | Streak milestones, streak-saver reminder |
-| Encourage | `quo-encourage.png` | After a hard round, low-score report intro, missed day |
-| Sleeping | `quo-sleeping.png` | Paused plan, notifications off, empty states |
-
-Rules: never stretch, recolour or crop through the eyes. Never place Quo next to the price, the consent box or the cancel button; those screens stay plain. Do not show Quo sad, crying or disappointed.
+Quo's other poses belong to the illustration library for marketing, email and the future training screens. Rules: never stretch, recolour or crop through the eyes. Never place Quo next to the price, the consent box or the cancel button. Do not show Quo sad, crying or disappointed.
 
 ## Illustration and iconography
 
-All illustrations are flat, rounded, outline-free shapes in the palette with soft two-tone shading. Icons for skills are white symbols on a coloured rounded tile. Rewards are single toy-like objects. Profiles are round medallions. New art should match by reusing the generation prompts kept with the source files in the repository under `brand/`.
+The product screens use no illustration apart from the Quo sticker. Their graphics are drawn in code from the form's own vocabulary: bubbles, timing marks, rules, the number line, the bell curve, the stamp, redaction bars.
 
-Interface icons (arrows, close, settings) are not part of this sheet yet; use a rounded 2px-stroke set such as Lucide until custom ones are drawn.
+The illustration library (mascot poses, skill tiles, game thumbnails, rewards, league badges, profile medallions, backgrounds) was generated with an image model. It is flat and rounded, a different register from the answer sheet, so use it only where a warmer, more playful tone is wanted: ads, social posts, emails. It needs a designer's redraw before print.
+
+Interface icons are not part of this sheet yet. The only glyph in use is the arrow on forward buttons, set in the display face.
 
 ## Asset groups
 
-Logos, Mascot, Skills, Games, Rewards, Leagues, Profiles and Backgrounds. Each group has its own note on use.
+Logos are the product's own. Mascot, Skills, Games, Rewards, Leagues, Profiles and Backgrounds form the illustration library. Each group has its own note on use.
 
 ## Open items
 
-- Quo and the illustrations need a designer's vector redraw before large-format or print use.
+- The illustration library needs a designer's redraw before large-format or print use, and a decision on whether it should be redrawn in the answer-sheet style.
 - Check that the name and the octopus mascot are clear for trademark use in launch markets.
 - Interface icon set and sound design are not defined yet.

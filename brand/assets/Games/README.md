@@ -1,1 +1,1 @@
-Thumbnails for the four launch games on night tiles, 1024px. Used as cards in the daily session and the games list.
+Illustration library. Thumbnails for the four launch games, 1024px. For the future training screens and marketing.

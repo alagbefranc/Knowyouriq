@@ -1,1 +1,1 @@
-Eight cognitive-style medallions for the report and share card: Strategist, Pattern Hunter, Number Whiz, Wordsmith, Navigator, Memory Keeper, Quick Thinker, All-Rounder. Profiles are for fun and are labelled that way in the product.
+Illustration library. Eight cognitive-style medallions. On the report the style is shown as a stamp instead; the medallions are for share cards and social posts.
