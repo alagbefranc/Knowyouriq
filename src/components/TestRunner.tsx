@@ -83,10 +83,11 @@ export function TestRunner(props: { attemptId: string; questions: PublicQuestion
   if (sectionDone) {
     const last = index >= questions.length;
     return (
-      <div className="stack center enter" key={`done-${index}`}>
-        <img src="/brand/quo-thinking.webp" alt="" width={160} height={160} />
-        <h1>Section complete: {sectionDone}</h1>
-        <p className="muted">{last ? "That was the last one." : `${questions.length - index} questions to go.`}</p>
+      <div className="stack center" key={`done-${index}`}>
+        {/* Seen five times a test: Quo leads, the words follow in shrinking gaps, all done in about 300ms. */}
+        <img className="beat" style={{ "--s": 0.92 } as React.CSSProperties} src="/brand/quo-thinking.webp" alt="" width={160} height={160} />
+        <h1 className="beat" style={{ "--d": "50ms", "--y": "8px" } as React.CSSProperties}>Section complete: {sectionDone}</h1>
+        <p className="muted beat" style={{ "--d": "90ms", "--y": "4px" } as React.CSSProperties}>{last ? "That was the last one." : `${questions.length - index} questions to go.`}</p>
         <button className="btn btn-primary" onClick={() => setSectionDone(null)}>
           {last ? "See my result" : "Continue"}
         </button>
@@ -111,13 +112,14 @@ export function TestRunner(props: { attemptId: string; questions: PublicQuestion
         <span data-testid="position">{index + 1} of {questions.length}</span>
       </div>
       <div className="track" role="progressbar" aria-valuemin={0} aria-valuemax={questions.length} aria-valuenow={index}>
-        <div className="fill" style={{ transform: `scaleX(${index / questions.length})` }} />
+        <div className="fill" style={{ "--p": (index / questions.length) * 100 } as React.CSSProperties} />
       </div>
-      <div className="stack enter" key={question.id}>
+      <div className="stack enter" key={`${question.id}-${memorizing ? "show" : "ask"}`}>
         {memorizing && question.memorize ? (
           <>
             <p className="label">Remember this</p>
             <p className="memo" data-testid="memorize">{question.memorize.text}</p>
+            <div className="countdown" style={{ "--ms": `${question.memorize.ms}ms` } as React.CSSProperties} />
           </>
         ) : (
           <>

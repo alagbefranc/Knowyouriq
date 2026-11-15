@@ -9,10 +9,11 @@ export default function Landing() {
         <source srcSet="/brand/knowyouriq-wordmark-reversed.svg" media="(prefers-color-scheme: dark)" />
         <img src="/brand/knowyouriq-wordmark.svg" alt="KnowYourIQ" width={151} height={35} />
       </picture>
-      <div className="stack center">
-        <img src="/brand/quo-wave.webp" alt="" width={200} height={200} fetchPriority="high" />
-        <h1>How sharp are you today?</h1>
-        <p className="muted">
+      {/* First-run hero: Quo leads, headline and copy follow. The form below stays still so it can be tapped at once. */}
+      <div className="stack center first-run">
+        <img className="beat" style={{ "--s": 0.92 } as React.CSSProperties} src="/brand/quo-wave.webp" alt="" width={200} height={200} fetchPriority="high" />
+        <h1 className="beat" style={{ "--d": "90ms", "--y": "10px" } as React.CSSProperties}>How sharp are you today?</h1>
+        <p className="muted beat" style={{ "--d": "150ms", "--y": "6px" } as React.CSSProperties}>
           {QUESTION_COUNT} quick questions across patterns, numbers, spatial, verbal and memory. About 10 minutes.
         </p>
       </div>

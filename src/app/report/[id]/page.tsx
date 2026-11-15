@@ -22,7 +22,7 @@ export default async function ReportPage({ params }: { params: Promise<{ id: str
   return (
     <main>
       <h1>Your report</h1>
-      <section className="score-card" aria-label="Your estimate">
+      <section className="score-card beat" style={{ "--s": 0.96 } as React.CSSProperties} aria-label="Your estimate">
         <span className="label">Your estimate</span>
         <span className="score" data-testid="estimate">{result.estimate}</span>
         <span>Likely range {result.low} to {result.high}</span>
@@ -31,12 +31,12 @@ export default async function ReportPage({ params }: { params: Promise<{ id: str
       <section className="card">
         <h2>Your five skills</h2>
         <div className="bars">
-          {SKILLS.map((skill) => (
+          {SKILLS.map((skill, i) => (
             <div className="bar-row" key={skill}>
               <img src={`/brand/skill-${skill}.webp`} alt="" width={36} height={36} />
               <div className="stack" style={{ gap: 4 }}>
                 <span>{SKILL_LABELS[skill]}</span>
-                <div className="track"><div className="fill" style={{ transform: `scaleX(${result.sections[skill] / 5})` }} /></div>
+                <div className="track"><div className="fill" style={{ "--p": result.sections[skill] * 20, "--d": `${[0, 60, 110, 150, 180][i]}ms` } as React.CSSProperties} /></div>
               </div>
               <strong>{result.sections[skill]}/5</strong>
             </div>

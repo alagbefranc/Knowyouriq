@@ -1,5 +1,12 @@
-/* Tokens mirror brand/tokens.json. Motion follows the project's design-engineering
-   rules: custom ease-out, transform/opacity only, under 300ms, press feedback. */
+/* Tokens mirror brand/tokens.json.
+   Motion follows the Emil Kowalski skills in .claude/skills (emil-design-eng, animate,
+   choreograph, mobile-native). The rules applied here:
+   - transform and opacity only; never transition: all; never scale(0); never ease-in
+   - press feedback 120ms, product UI under 300ms, longer only for once-per-visit moments
+   - the more often something is seen, the less it moves (25 questions: 4px, 160ms)
+   - one entrance per container; staggers have shrinking gaps and never block taps
+   - nothing moves on the price, consent and cancel controls (colour changes only)
+   - hover styles gated to real pointers; reduced motion keeps fades, drops movement */
 :root {
   --brand: #6c4dff; --brand-strong: #5638e0; --brand-tint: #ede9ff; --on-brand: #fff;
   --ink: #1e1548; --ink-muted: #5b5480; --night: #1e1548;
@@ -10,6 +17,7 @@
   --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --radius-sm: 8px; --radius-md: 14px; --radius-lg: 24px; --radius-pill: 999px;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --dur-press: 120ms; --dur-fast: 160ms; --dur-base: 220ms; --dur-moment: 500ms;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
@@ -22,6 +30,10 @@
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+/* Controls, not content: no double-tap zoom delay, no text selection or callout on long-press. */
+button, a, label { touch-action: manipulation; }
+button, .btn { user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+input, textarea, select { font-size: 16px; }
 body { margin: 0; background: var(--surface); color: var(--ink); font: 400 16px/24px var(--font-body); min-height: 100dvh; }
 main { max-width: 480px; margin: 0 auto; padding: 24px max(16px, env(safe-area-inset-right)) 48px max(16px, env(safe-area-inset-left)); display: grid; gap: 24px; }
 h1, h2 { font-family: var(--font-display); font-weight: 600; margin: 0; text-wrap: balance; }
@@ -39,8 +51,9 @@ img { max-width: 100%; height: auto; display: block; }
 
 .btn {
   font: 700 16px/24px var(--font-body); border: 0; border-radius: var(--radius-md); padding: 12px 24px; min-height: 48px; width: 100%;
-  cursor: pointer; touch-action: manipulation; user-select: none; text-align: center; text-decoration: none; display: inline-block;
-  transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+  cursor: pointer; text-align: center; text-decoration: none; display: inline-block;
+  /* Press feedback lands on pointer-down. The lip shadow snaps (not animated: it would repaint). */
+  transition: transform var(--dur-press) var(--ease-out), background-color var(--dur-fast) ease, color var(--dur-fast) ease;
 }
 .btn:active:not(:disabled) { transform: scale(0.97); }
 .btn-primary { background: var(--brand); color: var(--on-brand); box-shadow: var(--lip); }
@@ -48,6 +61,9 @@ img { max-width: 100%; height: auto; display: block; }
 .btn-secondary { background: var(--surface-raised); color: var(--brand-strong); border: 2px solid var(--border); }
 .btn-danger { background: var(--surface-raised); color: var(--danger); border: 2px solid var(--border); }
 .btn:disabled { background: var(--border); color: var(--ink-muted); box-shadow: none; cursor: not-allowed; }
+@media (hover: hover) and (pointer: fine) {
+  .btn-secondary:hover:not(:disabled), .btn-danger:hover:not(:disabled) { border-color: var(--brand); }
+}
 .btn:focus-visible, .opt:focus-visible, input:focus-visible { outline: 3px solid var(--spark); outline-offset: 2px; }
 
 .card { background: var(--surface-raised); border: 2px solid var(--border); border-radius: var(--radius-lg); padding: 24px; display: grid; gap: 16px; }
@@ -57,20 +73,36 @@ img { max-width: 100%; height: auto; display: block; }
 .check input { width: 22px; height: 22px; margin: 1px 0 0; accent-color: var(--brand); flex: none; }
 
 .track { height: 12px; border-radius: var(--radius-pill); background: var(--border); overflow: hidden; }
-.fill { height: 100%; width: 100%; border-radius: var(--radius-pill); background: var(--brand); transform-origin: left; transition: transform 250ms var(--ease-out); }
+/* The fill slides rather than scales so its rounded end keeps its shape. --p is 0..100, set on the fill itself. */
+.fill { height: 100%; width: 100%; border-radius: var(--radius-pill); background: var(--brand); transform: translateX(calc(var(--p, 0) * 1% - 100%)); transition: transform var(--dur-base) var(--ease-out); }
+/* Report bars fill once on arrival, strongest gap first (rare screen, so it may take its time). */
+.bars .fill { transition: transform var(--dur-moment) var(--ease-out) var(--d, 0ms); }
+@starting-style { .bars .fill { transform: translateX(-100%); } }
 
-/* A question enters once per screen: a short fade and rise, then stays put. */
-.enter { transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out); }
-@starting-style { .enter { opacity: 0; transform: translateY(8px); } }
+/* A new question is seen 25 times a test, so its entrance is nearly imperceptible:
+   it only stops the content from teleporting. Options arrive with it (one entrance per container). */
+.enter { transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out); }
+@starting-style { .enter { opacity: 0; transform: translateY(4px); } }
+
+/* Choreographed beats for the few moments that earn it (landing, section break, result).
+   Per element: --d delay, --y rise, --s start scale. Lead moves most; support less; gaps shrink. */
+.beat { animation: beat var(--beat-dur, var(--dur-base)) var(--ease-out) var(--d, 0ms) both; }
+@keyframes beat { from { opacity: 0; transform: translateY(var(--y, 0px)) scale(var(--s, 1)); } }
+.first-run { --beat-dur: var(--dur-moment); }
+
+/* Time left to memorise: constant motion, so linear. */
+.countdown { height: 4px; border-radius: var(--radius-pill); background: var(--brand); transform-origin: left; animation: drain var(--ms) linear both; }
+@keyframes drain { to { transform: scaleX(0); } }
 
 .prompt { font: 600 22px/30px var(--font-display); }
 .memo { font: 600 28px/36px var(--font-display); text-align: center; padding: 32px 16px; background: var(--brand-tint); border-radius: var(--radius-lg); }
 .opt {
-  display: flex; align-items: center; gap: 12px; width: 100%; min-height: 56px; text-align: left; cursor: pointer; touch-action: manipulation; user-select: none;
+  display: flex; align-items: center; gap: 12px; width: 100%; min-height: 56px; text-align: left; cursor: pointer;
   background: var(--surface-raised); color: var(--ink); border: 2px solid var(--border); border-radius: var(--radius-md); padding: 12px 16px; font: 500 16px/24px var(--font-body);
-  transition: transform 160ms var(--ease-out), border-color 160ms ease, background-color 160ms ease;
+  transition: transform var(--dur-press) var(--ease-out), border-color var(--dur-fast) ease, background-color var(--dur-fast) ease;
 }
-.opt:active:not(:disabled) { transform: scale(0.98); }
+.opt:active:not(:disabled) { transform: scale(0.97); }
+.key { transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease; }
 .opt[aria-pressed="true"] { border-color: var(--brand); background: var(--brand-tint); }
 .key { width: 28px; height: 28px; flex: none; border-radius: var(--radius-sm); background: var(--brand-tint); color: var(--brand-strong); display: grid; place-items: center; font: 700 13px/1 var(--font-body); }
 .opt[aria-pressed="true"] .key { background: var(--brand); color: var(--on-brand); }
@@ -86,8 +118,15 @@ img { max-width: 100%; height: auto; display: block; }
 .bar-row { display: grid; grid-template-columns: 36px 1fr auto; gap: 12px; align-items: center; }
 .error { color: var(--danger); font-weight: 700; }
 
+@keyframes fade { from { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
-  .enter { transition: opacity 200ms ease; }
+  /* Fewer and gentler, not zero: fades stay, movement and delays go. */
+  .enter { transition: opacity var(--dur-fast) ease; }
   @starting-style { .enter { transform: none; } }
-  .btn, .opt, .fill { transition: none; }
+  .beat { animation: fade var(--dur-fast) ease both; }
+  .btn, .opt { transition: background-color var(--dur-fast) ease, border-color var(--dur-fast) ease; }
+  .btn:active:not(:disabled), .opt:active:not(:disabled) { transform: none; }
+  .fill, .bars .fill { transition: none; }
+  @starting-style { .bars .fill { transform: translateX(calc(var(--p, 0) * 1% - 100%)); } }
+  .countdown { animation: none; }
 }

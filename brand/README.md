@@ -72,6 +72,25 @@ The `score` style is reserved for the estimate. Billing terms use `body`, never 
 - One column, phone first, `space-4` side gutter, 48px minimum tap height.
 - The four-point spark is the brand's one repeating shape: above Quo, on league badges, in background patterns at a `space-12` pitch.
 
+## Motion
+
+Motion follows Emil Kowalski's design-engineering rules (the skills in `.claude/skills`). The app's tokens live in `src/app/globals.css`.
+
+| Token | Value | Use |
+| --- | --- | --- |
+| `--ease-out` | `cubic-bezier(0.23, 1, 0.32, 1)` | Everything that enters or responds. Never `ease-in` |
+| `--dur-press` | 120ms | Press feedback on buttons and answer options, `scale(0.97)` |
+| `--dur-fast` | 160ms | Colour changes; the entrance of each question |
+| `--dur-base` | 220ms | Progress bar; section-break beats |
+| `--dur-moment` | 500ms | Once-per-visit moments only: landing hero, report bars |
+
+- **The more often it is seen, the less it moves.** A new question appears 25 times a test, so it only fades with a 4px rise. The landing hero and the report are seen once, so they get a staggered entrance.
+- **Only `transform` and `opacity` animate.** Nothing starts from `scale(0)`. No `transition: all`.
+- **One entrance per container.** Answer options arrive with their question; they are not staggered.
+- **Staggers have shrinking gaps** and the lead (Quo) moves most. Buttons are never delayed and can be tapped at once.
+- **Nothing moves on price, consent or cancel controls.** Colour changes only.
+- **Hover styles** apply only to real pointers. **Reduced motion** keeps fades and drops movement and delays.
+
 ## Quo, the mascot
 
 Quo is a small violet octopus with a spark above its head. Quo reacts; Quo does not talk in speech bubbles or deliver bad news.
@@ -103,4 +122,4 @@ Logos, Mascot, Skills, Games, Rewards, Leagues, Profiles and Backgrounds. Each g
 
 - Quo and the illustrations need a designer's vector redraw before large-format or print use.
 - Check that the name and the octopus mascot are clear for trademark use in launch markets.
-- Interface icon set, sound design and motion rules are not defined yet.
+- Interface icon set and sound design are not defined yet.

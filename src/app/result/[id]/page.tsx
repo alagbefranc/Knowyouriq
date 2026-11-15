@@ -26,8 +26,8 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
   return (
     <main>
       <div className="stack center">
-        <img src="/brand/quo-celebrate.webp" alt="" width={140} height={140} />
-        <h1>Test complete</h1>
+        <img className="beat" style={{ "--s": 0.9 } as React.CSSProperties} src="/brand/quo-celebrate.webp" alt="" width={140} height={140} />
+        <h1 className="beat" style={{ "--d": "60ms", "--y": "8px" } as React.CSSProperties}>Test complete</h1>
       </div>
       <section className="card" aria-label="Your free result">
         <span className="label">Your score band</span>

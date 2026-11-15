@@ -36,11 +36,11 @@ export function CancelPlan(props: { attemptId: string; ended: boolean; initially
     <div className="stack">
       <p data-testid="plan-status">Next charge: {props.nextCharge}.</p>
       {confirming ? (
-        <>
+        <div className="stack">
           <p>Cancel now and you keep access until {props.accessUntil}. You will not be charged again.</p>
           <button className="btn btn-danger" disabled={busy} onClick={confirm}>Confirm cancel</button>
           <button className="btn btn-secondary" disabled={busy} onClick={() => setConfirming(false)}>Keep my plan</button>
-        </>
+        </div>
       ) : (
         <button className="btn btn-danger" onClick={() => setConfirming(true)}>Cancel plan</button>
       )}
