@@ -21,7 +21,7 @@ export default function Landing() {
       <div className="panel" data-testid="pricing-notice">
         <span className="label">Fees</span>
         <p>
-          The test is free. The full report and daily training are part of a paid plan: <strong>{termsLine()}</strong>
+          Taking the test is free. Seeing your score and report needs a paid plan: <strong>{termsLine()}</strong>
         </p>
       </div>
       <p className="caption">

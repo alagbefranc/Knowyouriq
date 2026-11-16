@@ -9,8 +9,8 @@ import {
 } from "./billing";
 import { AppError } from "./errors";
 import { profileFor } from "./profile";
-import { getQuestion, QUESTIONS, toPublic, type PublicQuestion, type Skill } from "./questions";
-import { bandFor, estimateFromRaw, scoreSections, strongestSkill, totalScore, weakestSkills } from "./scoring";
+import { getQuestion, QUESTIONS, toPublic, type PublicQuestion } from "./questions";
+import { estimateFromRaw, scoreSections, strongestSkill, totalScore, weakestSkills } from "./scoring";
 import { defaultStore, type Attempt, type AttemptResult, type Store } from "./store";
 
 export interface Deps {
@@ -77,17 +77,11 @@ export async function submitAnswer(
   return { answered: Object.keys(attempt.answers).length };
 }
 
-export interface Teaser {
-  band: string;
-  strongest: Skill;
-}
-
-function teaserOf(result: AttemptResult): Teaser {
-  return { band: bandFor(result.estimate).label, strongest: result.strongest };
-}
-
-/** Scores the attempt. Unanswered questions count as wrong. Safe to call twice. */
-export async function completeAttempt(id: string, deps: Deps = {}): Promise<Teaser> {
+/**
+ * Scores the attempt. Unanswered questions count as wrong. Safe to call twice.
+ * Nothing about the score is returned: every part of the result is paid.
+ */
+export async function completeAttempt(id: string, deps: Deps = {}): Promise<{ completed: true }> {
   const attempt = await requireAttempt(id, deps);
   if (!attempt.result) {
     const choices = Object.fromEntries(Object.entries(attempt.answers).map(([qid, a]) => [qid, a.choice]));
@@ -104,14 +98,14 @@ export async function completeAttempt(id: string, deps: Deps = {}): Promise<Teas
     attempt.completedAt = nowOf(deps);
     await (await storeOf(deps)).saveAttempt(attempt);
   }
-  return teaserOf(attempt.result);
+  return { completed: true };
 }
 
-/** The free part of the result. Never includes the exact estimate. */
-export async function getTeaser(id: string, deps: Deps = {}): Promise<Teaser> {
+/** What the unpaid result screen may know: only how many questions were answered. */
+export async function getLockedResult(id: string, deps: Deps = {}): Promise<{ answered: number }> {
   const attempt = await requireAttempt(id, deps);
   if (!attempt.result) throw new AppError(409, "attempt_incomplete", "Finish the test to see your result.");
-  return teaserOf(attempt.result);
+  return { answered: Object.keys(attempt.answers).length };
 }
 
 export async function checkout(input: { attemptId: string; consent: unknown }, deps: Deps = {}): Promise<{ renewsOn: Date }> {

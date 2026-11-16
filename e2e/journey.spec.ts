@@ -10,13 +10,21 @@ test("landing states the price and renewal before the test starts", async ({ pag
   await expect(page).toHaveURL(/\/$/);
 });
 
-test("visitor takes the test, sees a free band, pays, and reads the report", async ({ page }) => {
+test("visitor takes the test, hits the paywall with no score shown, pays, and reads the report", async ({ page }) => {
+  const scoring: string[] = [];
+  page.on("response", async (response) => {
+    if (response.url().endsWith("/complete")) scoring.push(await response.text().catch(() => ""));
+  });
   await takeTest(page);
 
-  // Free teaser: a band and a strongest skill, not the exact estimate.
-  await expect(page.getByTestId("band")).toHaveText(/^\d{2,3} to \d{2,3}$/);
-  await expect(page.getByTestId("strongest")).not.toBeEmpty();
+  // Hard paywall: the result screen and the scoring response reveal nothing about the score.
+  await expect(page.getByRole("heading", { name: "Your score is ready" })).toBeVisible();
+  await expect(page.getByTestId("locked")).toBeVisible();
   await expect(page.getByTestId("estimate")).toHaveCount(0);
+  await expect(page.getByTestId("band")).toHaveCount(0);
+  await expect(page.locator("main")).not.toContainText(/\b(7\d|8\d|9\d|1[0-4]\d) to \d{2,3}\b/);
+  await expect(page.locator("main")).not.toContainText(/Strongest skill|Higher than \d/);
+  expect(scoring).toEqual([JSON.stringify({ completed: true })]);
 
   // Paywall: terms sit with the button, and the button is locked until consent is given.
   await expect(page.getByTestId("terms")).toContainText("$3.99 today for 7 days. Then $39.99 every 4 weeks until you cancel.");

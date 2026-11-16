@@ -59,13 +59,6 @@ export function estimateFromRaw(raw: number): Estimate {
   };
 }
 
-/** The 10-point band shown free on the teaser, e.g. 112 -> "110 to 120". */
-export function bandFor(estimate: number): { low: number; high: number; label: string } {
-  const low = clamp(Math.floor(estimate / 10) * 10, SCORE_MIN, SCORE_MAX - 10);
-  const high = low + 10;
-  return { low, high, label: `${low} to ${high}` };
-}
-
 /** Highest-scoring skill. Ties resolve in the fixed SKILLS order. */
 export function strongestSkill(sections: SectionScores): Skill {
   return SKILLS.reduce((best, s) => (sections[s] > sections[best] ? s : best), SKILLS[0]);

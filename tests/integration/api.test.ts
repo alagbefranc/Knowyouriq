@@ -44,10 +44,10 @@ describe("API", () => {
     expect((await answer(post({ questionId: "p1", choice: "A" }), ctx(id))).status).toBe(400);
     expect((await complete(post(), ctx("nope"))).status).toBe(404);
   });
-  it("complete returns only the free teaser", async () => {
+  it("complete returns nothing about the score", async () => {
     const { id } = await (await start(post({ ageConfirmed: true }))).json();
     for (const q of QUESTIONS) await answer(post({ questionId: q.id, choice: q.answer }), ctx(id));
-    expect(await (await complete(post(), ctx(id))).json()).toEqual({ band: "130 to 140", strongest: "patterns" });
+    expect(await (await complete(post(), ctx(id))).json()).toEqual({ completed: true });
   });
   it("checkout is refused without consent and succeeds with it", async () => {
     const id = await finishedAttempt();

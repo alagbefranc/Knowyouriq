@@ -1,18 +1,17 @@
 import { notFound, redirect } from "next/navigation";
 import { Paywall } from "@/components/Paywall";
-import { ScoreScale } from "@/components/ScoreScale";
 import { addDays, consentLabel, formatDate, formatMoney, PLAN, termsLine } from "@/lib/billing";
 import { AppError } from "@/lib/errors";
-import { SKILL_LABELS } from "@/lib/questions";
-import { getPlan, getTeaser, type Teaser } from "@/lib/service";
+import { QUESTION_COUNT } from "@/lib/questions";
+import { getLockedResult, getPlan } from "@/lib/service";
 
-const Redact = ({ w }: { w: number }) => <span className="redact" style={{ width: `${w}ch` }} />;
-
+// The whole result is paid. This screen shows nothing derived from the score:
+// no band, no strongest skill, no hint of how the visitor did.
 export default async function ResultPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  let teaser: Teaser;
+  let answered: number;
   try {
-    teaser = await getTeaser(id);
+    answered = (await getLockedResult(id)).answered;
   } catch (error) {
     if (error instanceof AppError && error.status === 404) notFound();
     if (error instanceof AppError && error.code === "attempt_incomplete") redirect(`/test/${id}`);
@@ -25,38 +24,36 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
     subscribed = false;
   }
   if (subscribed) redirect(`/report/${id}`);
-  const [low, high] = teaser.band.split(" to ").map(Number) as [number, number];
 
   return (
     <main>
       <div className="stack center">
         <img className="quo beat" style={{ "--s": 0.9 } as React.CSSProperties} src="/art/quo-celebrate.webp" alt="" width={210} height={210} />
-        <h1 className="beat" style={{ "--d": "60ms", "--y": "8px" } as React.CSSProperties}>Test complete</h1>
+        <span className="label">{answered} of {QUESTION_COUNT} answered</span>
+        <h1 className="beat" style={{ "--d": "60ms", "--y": "8px" } as React.CSSProperties}>
+          Your score is <mark>ready</mark>
+        </h1>
+        <p className="muted">We have scored all five worlds. Unlock your report to see how you did.</p>
       </div>
-      <section className="panel" aria-label="Your free result">
-        <span className="label">Your score band · free</span>
-        <span className="big" data-testid="band">{teaser.band}</span>
-        <ScoreScale low={low} high={high} />
-        <div className="row" style={{ justifyContent: "flex-start" }}>
-          <img className="thumb" src={`/art/worlds/${teaser.strongest}.webp`} alt="" width={44} height={44} />
-          <p>
-            Strongest skill: <strong data-testid="strongest">{SKILL_LABELS[teaser.strongest]}</strong>
-          </p>
+      <section className="panel" aria-label="Your locked result" data-testid="locked">
+        <span className="label">Your estimate</span>
+        <div className="locked-score" role="img" aria-label="Locked until you unlock your report">
+          <span className="tile tile-q tile-lg">?</span>
+          <span className="tile tile-q tile-lg">?</span>
+          <span className="tile tile-q tile-lg">?</span>
         </div>
-      </section>
-      <section className="panel" aria-label="In the full report">
-        <span className="label">In the full report</span>
-        <div className="lines" aria-hidden="true">
-          <span>Your estimate <Redact w={5} /></span>
-          <span>Likely range <Redact w={9} /></span>
-          <span>Higher than <Redact w={12} /></span>
-          <span>Five-skill breakdown <Redact w={10} /></span>
-          <span>Cognitive style <Redact w={12} /></span>
-        </div>
+        <span className="label">Your report includes</span>
+        <ul className="includes">
+          <li>Your score estimate and its likely range</li>
+          <li>How you compare with other test takers</li>
+          <li>Your result in each of the five skills</li>
+          <li>Your strongest and weakest skills</li>
+          <li>Your cognitive style</li>
+        </ul>
       </section>
       <Paywall
         attemptId={id}
-        heading={`${formatMoney(PLAN.trialPriceCents)} for ${PLAN.trialDays} days`}
+        heading={`Unlock your score: ${formatMoney(PLAN.trialPriceCents)} for ${PLAN.trialDays} days`}
         terms={termsLine()}
         renewsOn={formatDate(addDays(new Date(), PLAN.trialDays))}
         consentLabel={consentLabel()}

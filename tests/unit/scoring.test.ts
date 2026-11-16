@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { QUESTIONS } from "@/lib/questions";
-import { bandFor, estimateFromRaw, normalCdf, scoreSections, strongestSkill, totalScore, weakestSkills } from "@/lib/scoring";
+import { estimateFromRaw, normalCdf, scoreSections, strongestSkill, totalScore, weakestSkills } from "@/lib/scoring";
 
 const allCorrect = Object.fromEntries(QUESTIONS.map((q) => [q.id, q.answer]));
 
@@ -59,17 +59,6 @@ describe("normalCdf", () => {
     expect(normalCdf(0)).toBeCloseTo(0.5, 4);
     expect(normalCdf(1)).toBeCloseTo(0.8413, 3);
     expect(normalCdf(-1.96)).toBeCloseTo(0.025, 3);
-  });
-});
-
-describe("bandFor", () => {
-  it("returns the 10-point band containing the estimate", () => {
-    expect(bandFor(112).label).toBe("110 to 120");
-    expect(bandFor(100).label).toBe("100 to 110");
-  });
-  it("keeps the band inside 70 to 140", () => {
-    expect(bandFor(70).label).toBe("70 to 80");
-    expect(bandFor(140).label).toBe("130 to 140");
   });
 });
 

@@ -5,7 +5,7 @@ import { addDays } from "@/lib/billing";
 import { AppError } from "@/lib/errors";
 import { QUESTIONS } from "@/lib/questions";
 import {
-  cancelPlan, checkout, completeAttempt, getPlan, getReport, getTeaser, startAttempt, submitAnswer, viewAttempt, type Deps,
+  cancelPlan, checkout, completeAttempt, getLockedResult, getPlan, getReport, startAttempt, submitAnswer, viewAttempt, type Deps,
 } from "@/lib/service";
 import { MemoryStore } from "@/lib/store";
 
@@ -77,14 +77,13 @@ async function getReportAfterPaying(id: string) {
 describe("scoring into the result", () => {
   it("turns 25 correct answers into the top estimate and an All-Rounder profile", async () => {
     const id = await takeTest(25);
-    expect(await completeAttempt(id, deps)).toEqual({ band: "130 to 140", strongest: "patterns" });
+    expect(await completeAttempt(id, deps)).toEqual({ completed: true });
     const { result } = await getReportAfterPaying(id);
     expect(result).toMatchObject({ raw: 25, estimate: 140, low: 134, high: 140, percentile: 99, profile: "all-rounder" });
   });
   it("scores a mixed attempt per skill and picks the profile from it", async () => {
     const id = await takeTest(13); // patterns 5, numbers 5, spatial 3, verbal 0, memory 0
-    const teaser = await completeAttempt(id, deps);
-    expect(teaser).toEqual({ band: "100 to 110", strongest: "patterns" });
+    await completeAttempt(id, deps);
     const { result } = await getReportAfterPaying(id);
     expect(result.sections).toEqual({ patterns: 5, numbers: 5, spatial: 3, verbal: 0, memory: 0 });
     expect(result.estimate).toBe(102);
@@ -93,16 +92,23 @@ describe("scoring into the result", () => {
   });
   it("counts unanswered questions as wrong", async () => {
     const { id } = await startAttempt({ ageConfirmed: true }, deps);
-    expect((await completeAttempt(id, deps)).band).toBe("70 to 80");
+    await completeAttempt(id, deps);
+    expect((await getReportAfterPaying(id)).result).toMatchObject({ raw: 0, estimate: 70 });
   });
   it("gives the same result when completed twice", async () => {
     const id = await takeTest(18);
     expect(await completeAttempt(id, deps)).toEqual(await completeAttempt(id, at(1)));
   });
-  it("keeps the exact estimate out of the free teaser", async () => {
+  it("reveals nothing about the score before payment", async () => {
     const id = await takeTest(16);
-    await completeAttempt(id, deps);
-    expect(Object.keys(await getTeaser(id, deps)).sort()).toEqual(["band", "strongest"]);
+    expect(await completeAttempt(id, deps)).toEqual({ completed: true });
+    expect(await getLockedResult(id, deps)).toEqual({ answered: 25 });
+    const leaked = JSON.stringify([await completeAttempt(id, deps), await getLockedResult(id, deps), await viewAttempt(id, deps)]);
+    for (const secret of ["estimate", "band", "percentile", "strongest", "sections", "profile"]) expect(leaked).not.toContain(secret);
+  });
+  it("refuses the locked result screen until the test is finished", async () => {
+    const { id } = await startAttempt({ ageConfirmed: true }, deps);
+    expect(await codeOf(() => getLockedResult(id, deps))).toBe("attempt_incomplete");
   });
 });
 

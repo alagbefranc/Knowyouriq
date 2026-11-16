@@ -141,6 +141,10 @@ mark { background: none; color: var(--spark); }
 .scale .seg { position: absolute; top: 5px; height: 20px; border-radius: 6px; background: var(--spark); }
 .scale .tick { position: absolute; top: 9px; width: 2px; height: 12px; background: var(--text-2); transform: translateX(-1px); }
 .scale .num { position: absolute; top: 28px; transform: translateX(-50%); font: 600 13px/16px var(--font-label); color: var(--text-2); font-variant-numeric: tabular-nums; }
+.locked-score { display: flex; gap: 10px; }
+.includes { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.includes li { position: relative; padding-left: 28px; }
+.includes li::before { content: ""; position: absolute; left: 2px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--spark); }
 .redact { display: inline-block; height: 14px; border-radius: 7px; background: var(--line); vertical-align: middle; }
 .lines { display: grid; }
 .lines > * { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); }
