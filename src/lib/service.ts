@@ -29,11 +29,16 @@ async function requireAttempt(id: string, deps: Deps): Promise<Attempt> {
   return attempt;
 }
 
-export async function startAttempt(input: { ageConfirmed: unknown }, deps: Deps = {}): Promise<{ id: string }> {
-  if (input.ageConfirmed !== true) {
-    throw new AppError(400, "age_required", "You must confirm you are 18 or older to take the test.");
+export const AGE_BANDS = ["18-24", "25-34", "35-44", "45+"] as const;
+export type AgeBand = (typeof AGE_BANDS)[number];
+const isAdultBand = (value: unknown): value is AgeBand => AGE_BANDS.includes(value as AgeBand);
+
+/** The test is for adults: it starts only from an adult age band (or an explicit confirmation). */
+export async function startAttempt(input: { ageConfirmed?: unknown; ageBand?: unknown }, deps: Deps = {}): Promise<{ id: string }> {
+  if (input.ageConfirmed !== true && !isAdultBand(input.ageBand)) {
+    throw new AppError(400, "age_required", "KnowYourIQ is for people aged 18 or older.");
   }
-  const attempt: Attempt = { id: crypto.randomUUID(), createdAt: nowOf(deps), answers: {} };
+  const attempt: Attempt = { id: crypto.randomUUID(), createdAt: nowOf(deps), answers: {}, ...(isAdultBand(input.ageBand) ? { ageBand: input.ageBand } : {}) };
   await (await storeOf(deps)).saveAttempt(attempt);
   return { id: attempt.id };
 }

@@ -4,7 +4,7 @@ import { startAttempt } from "@/lib/service";
 export async function POST(request: Request) {
   try {
     const body = await request.json().catch(() => ({}));
-    return Response.json(await startAttempt({ ageConfirmed: body?.ageConfirmed }), { status: 201 });
+    return Response.json(await startAttempt({ ageConfirmed: body?.ageConfirmed, ageBand: body?.ageBand }), { status: 201 });
   } catch (error) {
     return errorResponse(error);
   }

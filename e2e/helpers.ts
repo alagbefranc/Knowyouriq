@@ -3,8 +3,7 @@ import { expect, type Page } from "@playwright/test";
 /** Clicks through the whole test the way a person would, always picking the option at `pick`. */
 export async function takeTest(page: Page, pick = 0) {
   await page.goto("/");
-  await page.getByLabel("I am 18 or older.").check();
-  await page.getByRole("button", { name: "Start the free test" }).click();
+  await page.getByRole("button", { name: "25 to 34" }).click();
   await expect(page).toHaveURL(/\/test\//);
 
   for (let n = 1; n <= 25; n += 1) {

@@ -13,6 +13,8 @@ export interface AttemptResult extends Estimate {
 export interface Attempt {
   id: string;
   createdAt: Date;
+  /** Self-reported age band chosen on the first screen. */
+  ageBand?: string;
   answers: Record<string, { choice: number; ms: number }>;
   completedAt?: Date;
   result?: AttemptResult;

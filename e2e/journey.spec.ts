@@ -1,13 +1,20 @@
 import { expect, test } from "@playwright/test";
 import { startTrial, takeTest } from "./helpers";
 
-test("landing states the price and renewal before the test starts", async ({ page }) => {
+test("landing states the price and renewal, and does not start the test for under-18s", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByTestId("pricing-notice")).toContainText("$3.99 today for 7 days. Then $39.99 every 4 weeks until you cancel.");
-  // The test cannot start until the visitor confirms their age.
-  await page.getByRole("button", { name: "Start the free test" }).click();
-  await expect(page.getByText("Tick the box to confirm you are 18 or older.")).toBeVisible();
+  // The fee is also mentioned right at the start question, before any effort is spent.
+  await expect(page.getByText("Your score and report need a paid plan")).toBeVisible();
+  await page.getByRole("button", { name: "I am under 18" }).click();
+  await expect(page.getByText("KnowYourIQ is for people aged 18 or older.")).toBeVisible();
   await expect(page).toHaveURL(/\/$/);
+});
+
+test("landing samples are labelled as samples", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.getByLabel("Sample report")).toContainText("An example with made-up values");
+  await expect(page.getByLabel("Sample certificate")).toContainText("Sample certificate");
 });
 
 test("visitor takes the test, hits the paywall with no score shown, pays, and reads the report", async ({ page }) => {
@@ -40,19 +47,28 @@ test("visitor takes the test, hits the paywall with no score shown, pays, and re
   await expect(page.getByText(/Likely range \d+ to \d+/)).toBeVisible();
   await expect(page.getByTestId("profile")).not.toBeEmpty();
   await expect(page.getByTestId("plan-line")).toContainText(/Renews on .* for \$39\.99/);
+
+  // Certificate: carries the name typed in, the same estimate, and the estimate disclaimer.
+  await page.getByLabel("Name to print on your certificate").fill("Jordan Lee");
+  await page.getByRole("button", { name: "Create my certificate" }).click();
+  await expect(page).toHaveURL(/\/certificate\//);
+  await expect(page.getByTestId("certificate-name")).toHaveText("Jordan Lee");
+  await expect(page.getByTestId("certificate")).toContainText(String(estimate));
+  await expect(page.getByTestId("certificate")).toContainText("An estimate from a short online test");
 });
 
 test("the report cannot be opened without paying", async ({ page }) => {
   const id = await takeTest(page, 1);
   await page.goto(`/report/${id}`);
   await expect(page).toHaveURL(new RegExp(`/result/${id}$`));
+  await page.goto(`/certificate/${id}?name=Jordan`);
+  await expect(page).toHaveURL(new RegExp(`/result/${id}$`));
   await expect(page.getByRole("button", { name: "Start 7-day trial" })).toBeVisible();
 });
 
 test("a refresh mid-test resumes at the same question", async ({ page }) => {
   await page.goto("/");
-  await page.getByLabel("I am 18 or older.").check();
-  await page.getByRole("button", { name: "Start the free test" }).click();
+  await page.getByRole("button", { name: "25 to 34" }).click();
   for (let n = 1; n <= 3; n += 1) {
     await expect(page.getByTestId("position")).toHaveText(`${n} of 25`);
     await page.getByTestId("option").first().click();
@@ -70,8 +86,7 @@ test("the browser never receives answer keys", async ({ page }) => {
     }
   });
   await page.goto("/");
-  await page.getByLabel("I am 18 or older.").check();
-  await page.getByRole("button", { name: "Start the free test" }).click();
+  await page.getByRole("button", { name: "25 to 34" }).click();
   await expect(page.getByTestId("position")).toHaveText("1 of 25");
   await page.getByTestId("option").first().click();
   await expect(page.getByTestId("position")).toHaveText("2 of 25");

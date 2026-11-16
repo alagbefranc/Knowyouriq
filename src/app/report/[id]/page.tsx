@@ -1,5 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 import { BellCurve } from "@/components/BellCurve";
+import { CertificateForm } from "@/components/CertificateForm";
 import { formatDate, formatMoney } from "@/lib/billing";
 import { AppError } from "@/lib/errors";
 import { PROFILES } from "@/lib/profile";
@@ -56,6 +57,10 @@ export default async function ReportPage({ params }: { params: Promise<{ id: str
           <h2 data-testid="profile">{profile.name}</h2>
         </div>
         <p>{profile.blurb}</p>
+      </section>
+      <section className="panel">
+        <span className="label">Your certificate</span>
+        <CertificateForm attemptId={id} />
       </section>
       <section className="panel">
         <span className="label">Your plan</span>

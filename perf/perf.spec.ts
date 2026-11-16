@@ -37,8 +37,7 @@ test("landing page paints fast and ships little JavaScript", async ({ page }) =>
 
 test("answering a question feels instant", async ({ page }) => {
   await page.goto("/");
-  await page.getByLabel("I am 18 or older.").check();
-  await page.getByRole("button", { name: "Start the free test" }).click();
+  await page.getByRole("button", { name: "25 to 34" }).click();
   const timings: number[] = [];
   for (let n = 1; n <= 4; n += 1) {
     await expect(page.getByTestId("position")).toHaveText(`${n} of 25`);

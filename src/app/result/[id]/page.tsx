@@ -49,6 +49,7 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
           <li>Your result in each of the five skills</li>
           <li>Your strongest and weakest skills</li>
           <li>Your cognitive style</li>
+          <li>A certificate with your name</li>
         </ul>
       </section>
       <Paywall

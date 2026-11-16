@@ -41,6 +41,13 @@ describe("taking the test", () => {
   it("refuses to start without the age confirmation", async () => {
     expect(await codeOf(() => startAttempt({ ageConfirmed: false }, deps))).toBe("age_required");
   });
+  it("starts from an adult age band and refuses anything else", async () => {
+    const { id } = await startAttempt({ ageBand: "25-34" }, deps);
+    expect((await deps.store!.getAttempt(id))?.ageBand).toBe("25-34");
+    for (const ageBand of ["under-18", "", 17, undefined]) {
+      expect(await codeOf(() => startAttempt({ ageBand }, deps))).toBe("age_required");
+    }
+  });
   it("never exposes answer keys to the browser view", async () => {
     const { id } = await startAttempt({ ageConfirmed: true }, deps);
     const view = await viewAttempt(id, deps);

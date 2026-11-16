@@ -141,6 +141,17 @@ mark { background: none; color: var(--spark); }
 .scale .seg { position: absolute; top: 5px; height: 20px; border-radius: 6px; background: var(--spark); }
 .scale .tick { position: absolute; top: 9px; width: 2px; height: 12px; background: var(--text-2); transform: translateX(-1px); }
 .scale .num { position: absolute; top: 28px; transform: translateX(-50%); font: 600 13px/16px var(--font-label); color: var(--text-2); font-variant-numeric: tabular-nums; }
+.center-text { text-align: center; }
+.link-btn { background: none; border: 0; color: var(--text-2); font: 500 15px/22px var(--font-body); text-decoration: underline; cursor: pointer; justify-self: center; padding: 6px 10px; }
+.field { width: 100%; min-height: 52px; border-radius: 14px; border: 2px solid var(--line); background: var(--bg); color: var(--text); padding: 12px 14px; font: 500 17px/24px var(--font-body); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.steps li { display: flex; gap: 14px; align-items: flex-start; }
+.steps .tile { flex: none; }
+.cert { background: var(--panel); border: 3px solid var(--spark); outline: 2px solid var(--spark-lip); outline-offset: 4px; border-radius: 18px; margin: 6px; padding: 24px 20px; display: grid; gap: 8px; justify-items: center; text-align: center; }
+.cert-name { font: 800 30px/34px var(--font-display); letter-spacing: -0.02em; overflow-wrap: anywhere; }
+.cert-score { font: 800 72px/72px var(--font-display); letter-spacing: -0.03em; color: var(--spark); font-variant-numeric: tabular-nums; }
+.cert .row { width: 100%; }
+@media print { .masthead, .btn { display: none !important; } }
 .locked-score { display: flex; gap: 10px; }
 .includes { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
 .includes li { position: relative; padding-left: 28px; }
