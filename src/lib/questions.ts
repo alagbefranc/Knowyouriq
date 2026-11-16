@@ -50,6 +50,8 @@ const seq = (...tokens: Token[]): Extra => ({ sequence: tokens });
 const img = (...names: string[]) => names.map((n) => `img:${n}`);
 const named = (...names: string[]) => names.map((n) => `w:${n}`);
 const nums = (...values: number[]) => values.map((v) => `n:${v}`);
+/** How long a memory set stays on screen. The player can move on sooner. */
+export const MEMORISE_MS = 20_000;
 const NEXT = "What comes next?";
 const TURNED = "Which one is the same toy, only turned?";
 
@@ -80,11 +82,11 @@ export const QUESTIONS: readonly Question[] = [
   q("v4", "verbal", "Finish the pair", named("flower", "web", "hive", "tree"), 2, seq("w:bird", "is to", "w:nest", "as", "w:bee", "is to", "?")),
   q("v5", "verbal", "Which one does not belong?", named("spoon", "hammer", "saw", "wrench"), 0),
 
-  q("m1", "memory", "Which one was not there?", img("ball", "star", "gem", "cube"), 2, { memorize: { items: img("star", "cube", "ball", "donut"), ms: 2500 } }),
-  q("m2", "memory", "Which came first?", img("pyramid", "gem", "donut", "star"), 0, { memorize: { items: img("pyramid", "gem", "donut", "star", "ball"), ms: 2500 } }),
-  q("m3", "memory", "How many gems were there?", nums(1, 2, 3, 4), 2, { memorize: { items: img("gem", "ball", "gem", "cube", "duck", "gem"), ms: 3000 } }),
-  q("m4", "memory", "What was the fourth number?", nums(1, 5, 8, 6), 3, { memorize: { items: nums(3, 8, 1, 6, 5, 2), ms: 3000 } }),
-  q("m5", "memory", "Which one came right after the duck?", img("key", "can", "ball", "cube"), 1, { memorize: { items: img("key", "duck", "can", "ball", "cube"), ms: 3000 } }),
+  q("m1", "memory", "Which one was not there?", img("ball", "star", "gem", "cube"), 2, { memorize: { items: img("star", "cube", "ball", "donut"), ms: MEMORISE_MS } }),
+  q("m2", "memory", "Which came first?", img("pyramid", "gem", "donut", "star"), 0, { memorize: { items: img("pyramid", "gem", "donut", "star", "ball"), ms: MEMORISE_MS } }),
+  q("m3", "memory", "How many gems were there?", nums(1, 2, 3, 4), 2, { memorize: { items: img("gem", "ball", "gem", "cube", "duck", "gem"), ms: MEMORISE_MS } }),
+  q("m4", "memory", "What was the fourth number?", nums(1, 5, 8, 6), 3, { memorize: { items: nums(3, 8, 1, 6, 5, 2), ms: MEMORISE_MS } }),
+  q("m5", "memory", "Which one came right after the duck?", img("key", "can", "ball", "cube"), 1, { memorize: { items: img("key", "duck", "can", "ball", "cube"), ms: MEMORISE_MS } }),
 ];
 
 export const QUESTION_COUNT = QUESTIONS.length;

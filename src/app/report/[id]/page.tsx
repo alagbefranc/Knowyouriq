@@ -2,6 +2,7 @@ import { notFound, redirect } from "next/navigation";
 import { BellCurve } from "@/components/BellCurve";
 import { CertificateForm } from "@/components/CertificateForm";
 import { formatDate, formatMoney } from "@/lib/billing";
+import { COURSES, LESSON_COUNT } from "@/lib/courses";
 import { AppError } from "@/lib/errors";
 import { PROFILES } from "@/lib/profile";
 import { SKILL_LABELS, SKILLS } from "@/lib/questions";
@@ -57,6 +58,15 @@ export default async function ReportPage({ params }: { params: Promise<{ id: str
           <h2 data-testid="profile">{profile.name}</h2>
         </div>
         <p>{profile.blurb}</p>
+      </section>
+      <section className="course">
+        <div className="world"><img src="/art/courses/rubrics.webp" alt="" width={960} height={640} loading="lazy" /></div>
+        <div className="stack" style={{ padding: "4px 4px 0" }}>
+          <span className="label">Included in your plan</span>
+          <h2>Courses for AI training work</h2>
+          <p className="muted">{COURSES.length} courses, {LESSON_COUNT} short lessons on the skills that AI-training screenings test.</p>
+          <a className="btn btn-primary" href={`/learn/${id}`}>Open my courses</a>
+        </div>
       </section>
       <section className="panel">
         <span className="label">Your certificate</span>

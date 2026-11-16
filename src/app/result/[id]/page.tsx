@@ -1,6 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import { Paywall } from "@/components/Paywall";
 import { addDays, consentLabel, formatDate, formatMoney, PLAN, termsLine } from "@/lib/billing";
+import { COURSES } from "@/lib/courses";
 import { AppError } from "@/lib/errors";
 import { QUESTION_COUNT } from "@/lib/questions";
 import { getLockedResult, getPlan } from "@/lib/service";
@@ -50,6 +51,7 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
           <li>Your strongest and weakest skills</li>
           <li>Your cognitive style</li>
           <li>A certificate with your name</li>
+          <li>{COURSES.length} courses on getting AI training work</li>
         </ul>
       </section>
       <Paywall

@@ -2,6 +2,7 @@ import { BellCurve } from "@/components/BellCurve";
 import { Certificate } from "@/components/Certificate";
 import { StartForm } from "@/components/StartForm";
 import { formatMoney, PLAN, termsLine } from "@/lib/billing";
+import { COURSE_DISCLAIMER, COURSE_MINUTES, COURSES, LESSON_COUNT } from "@/lib/courses";
 import { QUESTION_COUNT, SKILL_LABELS, SKILLS } from "@/lib/questions";
 
 // Everything in the "sample" sections is an illustration with made-up values, and is labelled as one.
@@ -71,6 +72,24 @@ export default function Landing() {
         <Certificate sample name="Alex Morgan" estimate={SAMPLE.estimate} date="1 June 2026" id="4829 1375" />
       </section>
 
+      <section className="stack" aria-label="Courses">
+        <h2>Courses for AI training work</h2>
+        <p className="muted">
+          Companies that build AI pay people to rate, rank and correct AI answers. These {COURSES.length} courses ({LESSON_COUNT} lessons, about {COURSE_MINUTES} minutes) teach the skills their screenings test.
+        </p>
+        {COURSES.map((course) => (
+          <div className="course" key={course.id}>
+            <div className="world"><img src={`/art/courses/${course.cover}.webp`} alt="" width={960} height={640} loading="lazy" /></div>
+            <div className="stack" style={{ padding: "4px 4px 0", gap: 6 }}>
+              <strong>{course.title}</strong>
+              <p className="muted">{course.summary}</p>
+              <span className="caption">{course.lessons.length} lessons</span>
+            </div>
+          </div>
+        ))}
+        <p className="caption">{COURSE_DISCLAIMER}</p>
+      </section>
+
       <section className="panel" id="plan" data-testid="pricing-notice">
         <span className="label">The plan</span>
         <h2>{formatMoney(PLAN.trialPriceCents)} for {PLAN.trialDays} days</h2>
@@ -80,6 +99,7 @@ export default function Landing() {
           <li>Your result in each of the five skills</li>
           <li>Your cognitive style</li>
           <li>A certificate with your name</li>
+          <li>{COURSES.length} courses ({LESSON_COUNT} lessons) on getting AI training work</li>
         </ul>
         <p>
           Taking the test is free. Seeing your score and report needs a paid plan: <strong>{termsLine()}</strong>

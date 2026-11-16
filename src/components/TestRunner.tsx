@@ -46,27 +46,31 @@ export function TestRunner(props: { attemptId: string; questions: PublicQuestion
   });
   const [selected, setSelected] = useState<number | null>(null);
   const [sectionDone, setSectionDone] = useState<string | null>(null);
-  const [memorizing, setMemorizing] = useState(false);
+  // Id of the memory question whose set has been hidden. Derived this way so the
+  // set shows on the very first render of the question, with no flash of the options.
+  const [recalled, setRecalled] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const shownAt = useRef(0);
   const finishing = useRef(false);
 
   const question = questions[index];
 
+  // The memory set hides when its time runs out, or sooner if the player says they are ready.
+  const memorizing = Boolean(question?.memorize) && recalled !== question?.id;
+  function endMemorizing() {
+    if (question) setRecalled(question.id);
+    shownAt.current = performance.now();
+  }
+
   useEffect(() => {
     if (!question || sectionDone) return;
     setSelected(null);
-    if (question.memorize) {
-      setMemorizing(true);
-      const timer = setTimeout(() => {
-        setMemorizing(false);
-        shownAt.current = performance.now();
-      }, question.memorize.ms);
-      return () => clearTimeout(timer);
-    }
-    setMemorizing(false);
     shownAt.current = performance.now();
-  }, [question, sectionDone]);
+    if (!question.memorize || recalled === question.id) return;
+    const timer = setTimeout(endMemorizing, question.memorize.ms);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [question, sectionDone, recalled]);
 
   useEffect(() => {
     if (index < questions.length || sectionDone || finishing.current) return;
@@ -152,6 +156,8 @@ export function TestRunner(props: { attemptId: string; questions: PublicQuestion
             <p className="prompt">Remember these</p>
             <div className="tray" data-testid="memorize">{strip(question.memorize.items)}</div>
             <div className="countdown" style={{ "--ms": `${question.memorize.ms}ms` } as React.CSSProperties} />
+            <p className="caption center-text">You have {Math.round(question.memorize.ms / 1000)} seconds. Take your time.</p>
+            <button className="btn btn-secondary" data-testid="ready" onClick={endMemorizing}>I have got it</button>
           </>
         ) : (
           <>

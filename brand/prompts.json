@@ -505,5 +505,37 @@
   "name": "sp-spoon",
   "prompt": "A shiny silver spoon. A single object, centred, isolated, filling about 70% of the frame, no ground, fully transparent background. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours, soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
   "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "c-orientation",
+  "prompt": "A cosy floating desk with a chunky toy laptop showing a blank glowing screen, with the same violet octopus toy mascot from the reference image (same design, lilac belly, big glossy eyes, pink cheeks, glowing yellow spark above its head) typing on it while a small friendly round robot toy hovers beside it and empty speech bubbles float between them. The scene is set at night against a deep indigo sky (#120B33) with soft stars; the top and bottom edges of the image fade into plain deep indigo #120B33. The mascot and the main action sit in the central horizontal band of the image. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "ref": "q3-master",
+  "size": "1536x1024",
+  "background": "opaque",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "c-rubrics",
+  "prompt": "The same violet octopus toy mascot from the reference image (same design, lilac belly, big glossy eyes, pink cheeks, glowing yellow spark above its head) holding up a big toy clipboard with a checklist made only of coloured tick marks and star shapes (no writing), next to a set of toy balance scales weighing two glowing empty speech bubbles. The scene is set at night against a deep indigo sky (#120B33) with soft stars; the top and bottom edges of the image fade into plain deep indigo #120B33. The mascot and the main action sit in the central horizontal band of the image. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "ref": "q3-master",
+  "size": "1536x1024",
+  "background": "opaque",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "c-errors",
+  "prompt": "The same violet octopus toy mascot from the reference image (same design, lilac belly, big glossy eyes, pink cheeks, glowing yellow spark above its head) peering through a large magnifying glass at an empty speech bubble coming from a small friendly robot toy; inside the bubble a tiny cute toy ladybird bug is revealed by the magnifying glass. The scene is set at night against a deep indigo sky (#120B33) with soft stars; the top and bottom edges of the image fade into plain deep indigo #120B33. The mascot and the main action sit in the central horizontal band of the image. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "ref": "q3-master",
+  "size": "1536x1024",
+  "background": "opaque",
+  "model": "gpt-image-2.6-sunburst"
+ },
+ {
+  "name": "c-assessment",
+  "prompt": "The same violet octopus toy mascot from the reference image (same design, lilac belly, big glossy eyes, pink cheeks, glowing yellow spark above its head) proudly stepping through a glowing toy doorway at the top of three chunky steps, holding up a golden medal badge with a star on it, confetti in the air. The scene is set at night against a deep indigo sky (#120B33) with soft stars; the top and bottom edges of the image fade into plain deep indigo #120B33. The mascot and the main action sit in the central horizontal band of the image. Stylized 3D render in the style of premium mobile-game key art: soft vinyl-toy and clay materials, smooth rounded chunky forms, vibrant saturated colours (violet #6C4DFF, sunny yellow #FFC83D, coral #FF6B5E, mint #2ED3A6, sky blue #4DB8FF, hot pink #FF5FA2), soft studio lighting with a gentle rim light, subtle ambient occlusion, crisp and highly detailed. Absolutely no text, letters or numerals.",
+  "ref": "q3-master",
+  "size": "1536x1024",
+  "background": "opaque",
+  "model": "gpt-image-2.6-sunburst"
  }
 ]

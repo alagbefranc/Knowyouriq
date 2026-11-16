@@ -8,8 +8,10 @@ export async function takeTest(page: Page, pick = 0) {
 
   for (let n = 1; n <= 25; n += 1) {
     await expect(page.getByTestId("position")).toHaveText(`${n} of 25`);
-    // Memory questions show something to remember first; options appear after it hides.
-    await page.getByTestId("option").nth(pick).click({ timeout: 15_000 });
+    // Memory questions show a set to remember for up to 20 seconds; say we are ready to move on.
+    await page.locator('[data-testid="option"], [data-testid="ready"]').first().waitFor();
+    if (await page.getByTestId("ready").isVisible()) await page.getByTestId("ready").click();
+    await page.getByTestId("option").nth(pick).click();
     if (n % 5 === 0) {
       await expect(page.getByRole("heading", { name: /Section complete/ })).toBeVisible();
       await page.getByRole("button", { name: n === 25 ? "See my result" : "Continue" }).click();

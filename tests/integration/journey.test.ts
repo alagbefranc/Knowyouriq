@@ -5,7 +5,7 @@ import { addDays } from "@/lib/billing";
 import { AppError } from "@/lib/errors";
 import { QUESTIONS } from "@/lib/questions";
 import {
-  cancelPlan, checkout, completeAttempt, getLockedResult, getPlan, getReport, startAttempt, submitAnswer, viewAttempt, type Deps,
+  cancelPlan, checkout, completeAttempt, completeLesson, getLearning, getLockedResult, getPlan, getReport, startAttempt, submitAnswer, viewAttempt, type Deps,
 } from "@/lib/service";
 import { MemoryStore } from "@/lib/store";
 
@@ -167,5 +167,32 @@ describe("plan over time", () => {
     expect(await cancelPlan(id, at(2))).toMatchObject({ cancelled: true, nextCharge: null, accessUntil: addDays(T0, 7) });
     expect((await getReport(id, at(6))).plan.cancelled).toBe(true);
     expect(await codeOf(() => getReport(id, at(7)))).toBe("subscription_ended");
+  });
+});
+
+describe("courses", () => {
+  it("are closed until a trial starts", async () => {
+    const id = await takeTest(15);
+    await completeAttempt(id, deps);
+    expect(await codeOf(() => getLearning(id, deps))).toBe("subscription_required");
+    expect(await codeOf(() => completeLesson({ attemptId: id, lessonId: "rubrics-1" }, deps))).toBe("subscription_required");
+  });
+  it("record each finished lesson once and reject unknown lessons", async () => {
+    const id = await takeTest(15);
+    await completeAttempt(id, deps);
+    await checkout({ attemptId: id, consent: true }, deps);
+    expect(await getLearning(id, deps)).toEqual({ done: [] });
+    await completeLesson({ attemptId: id, lessonId: "rubrics-1" }, deps);
+    await completeLesson({ attemptId: id, lessonId: "rubrics-1" }, deps);
+    expect((await completeLesson({ attemptId: id, lessonId: "errors-3" }, deps)).done).toEqual(["rubrics-1", "errors-3"]);
+    expect(await codeOf(() => completeLesson({ attemptId: id, lessonId: "made-up" }, deps))).toBe("unknown_lesson");
+  });
+  it("close again when a cancelled plan runs out", async () => {
+    const id = await takeTest(15);
+    await completeAttempt(id, deps);
+    await checkout({ attemptId: id, consent: true }, deps);
+    await cancelPlan(id, at(1));
+    expect(await getLearning(id, at(6))).toEqual({ done: [] });
+    expect(await codeOf(() => getLearning(id, at(7)))).toBe("subscription_ended");
   });
 });

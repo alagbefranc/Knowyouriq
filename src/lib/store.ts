@@ -19,6 +19,8 @@ export interface Attempt {
   completedAt?: Date;
   result?: AttemptResult;
   subscription?: Subscription;
+  /** Ids of course lessons this customer has completed. */
+  lessonsDone?: string[];
 }
 
 export interface Store {

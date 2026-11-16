@@ -46,6 +46,11 @@ describe("question bank", () => {
   it("uses a picture or number tile for every answer option", () => {
     for (const q of QUESTIONS) for (const option of q.options) expect(option).toMatch(/^(img|n|w):/);
   });
+  it("gives 20 seconds to memorise every memory set", () => {
+    const memory = QUESTIONS.filter((q) => q.memorize);
+    expect(memory).toHaveLength(5);
+    for (const q of memory) expect(q.memorize!.ms).toBe(20_000);
+  });
   it("looks questions up by id", () => {
     expect(getQuestion("n3")?.sequence).toEqual(["n:1", "n:4", "n:9", "n:16", "?"]);
     expect(getQuestion("nope")).toBeUndefined();

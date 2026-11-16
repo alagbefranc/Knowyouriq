@@ -7,6 +7,7 @@ import {
   validateCheckout,
   type Subscription,
 } from "./billing";
+import { findLesson } from "./courses";
 import { AppError } from "./errors";
 import { profileFor } from "./profile";
 import { getQuestion, QUESTIONS, toPublic, type PublicQuestion } from "./questions";
@@ -171,4 +172,24 @@ export async function cancelPlan(id: string, deps: Deps = {}): Promise<PlanView>
   attempt.subscription = sub;
   await (await storeOf(deps)).saveAttempt(attempt);
   return planOf(sub);
+}
+
+/** Opens the course library. Courses are part of the paid plan, checked on every request. */
+export async function getLearning(id: string, deps: Deps = {}): Promise<{ done: string[] }> {
+  const attempt = await requireAttempt(id, deps);
+  const sub = await currentSubscription(attempt, deps);
+  if (sub.status === "ended") throw new AppError(402, "subscription_ended", "Your plan has ended.");
+  return { done: attempt.lessonsDone ?? [] };
+}
+
+export async function completeLesson(input: { attemptId: string; lessonId: unknown }, deps: Deps = {}): Promise<{ done: string[] }> {
+  const { done } = await getLearning(input.attemptId, deps);
+  if (typeof input.lessonId !== "string" || !findLesson(input.lessonId)) {
+    throw new AppError(400, "unknown_lesson", "Unknown lesson.");
+  }
+  if (done.includes(input.lessonId)) return { done };
+  const attempt = await requireAttempt(input.attemptId, deps);
+  attempt.lessonsDone = [...done, input.lessonId];
+  await (await storeOf(deps)).saveAttempt(attempt);
+  return { done: attempt.lessonsDone };
 }
